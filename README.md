@@ -8,7 +8,10 @@ Intro
 $ mad dep com pla rep
 > kvs:join().
 > kvs:dir().
-[{table,'Warehouse'},
+[{table,'Branch'},
+ {table,'Delivery'},
+ {table,'Location'},
+ {table,'Warehouse'},
  {table,'Person'},
  {table,'Ogranization'},
  {table,'Contract'},
