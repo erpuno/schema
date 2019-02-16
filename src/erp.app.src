@@ -1,0 +1,10 @@
+{application, erp,
+ [
+  {description, "ERP Core"},
+  {vsn, "0.2"},
+  {registered, []},
+  {applications, [kernel,stdlib]},
+  {mod, { erp, []}},
+  {env, []}
+ ]}.
+
