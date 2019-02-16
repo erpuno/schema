@@ -1,6 +1,6 @@
 {application, erp,
  [
-  {description, "ERP Core"},
+  {description, "ERP Enterprise Resource Planning"},
   {vsn, "0.2"},
   {registered, []},
   {applications, [kernel,stdlib]},
