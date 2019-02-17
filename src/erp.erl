@@ -2,7 +2,7 @@
 -compile(export_all).
 -behaviour(application).
 -behaviour(supervisor).
--include_lib("kvx/include/metainfo.hrl").
+-include_lib("kvs/include/metainfo.hrl").
 -include("buyer.hrl").
 -include("transport.hrl").
 -include("seller.hrl").
