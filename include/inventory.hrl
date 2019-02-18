@@ -1,11 +1,11 @@
 -ifndef(INVENTORY_HRL).
 -define(INVENTORY_HRL, true).
 
--include("organization.hrl").
+-include("branch.hrl").
 
 -record('Inventory',   { id          = [] :: [] | binary(),
                          name        = [] :: [] | binary(),
-                         manufacturer= [] :: [] | #'Organization'{},
+                         branch      = [] :: [] | #'Branch'{},
                          type        = [] :: term() }).
 
 -endif.

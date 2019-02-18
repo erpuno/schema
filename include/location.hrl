@@ -3,12 +3,14 @@
 
 -include("organization.hrl").
 
+-type locationType() :: normal | extra.
+
 -record('Location',   { id          = [] :: [] | binary(),
                         name        = [] :: [] | binary(),
                         country     = [] :: [] | binary(),
                         city        = [] :: [] | binary(),
                         address     = [] :: [] | binary(),
                         organization= [] :: [] | #'Organization'{},
-                        type        = [] :: materialType() }).
+                        type        = [] :: locationType() }).
 
 -endif.
