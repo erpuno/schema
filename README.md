@@ -6,7 +6,7 @@ Intro
 
 Boot Enterprise:
 
-```erlang
+```
 $ mad dep com pla rep
 > erp:boot().
 [{group,6},{parties,3}]
@@ -14,7 +14,8 @@ $ mad dep com pla rep
 
 Get list of companies that form a group (transnational corporation, holding, daughters) of owner:
 
-```> erp:group().
+```erlang
+> erp:group().
 [{'Organization',6,[],5,"O7","github.com/o7",[]},
  {'Organization',5,6,4,"O3","github.com/o3",[]},
  {'Organization',4,5,3,"O1","github.com/o1",[]},
