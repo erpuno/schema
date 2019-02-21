@@ -39,8 +39,10 @@ tables() -> [ #table  { name = 'Buyer',        fields = record_info(fields, 'Buy
 
 contra_agents() -> contra_agents.
 owner_group()   -> owner_group.
-group()         -> #reader{args=R}=kvx:take((kvx:bot(kvx:load_reader(1)))#reader{args=-1,dir=0}),R.
-parties()       -> #reader{args=R}=kvx:take((kvx:bot(kvx:load_reader(2)))#reader{args=-1,dir=0}),R.
+group()         -> #reader{args=R}=kvx:take((kvx:bot(kvx:load_reader(1)))#reader{args=-1,dir=0}),
+                   lists:map(fun(#'Organization'{name=X,url=Y}) -> {X,Y} end,R).
+parties()       -> #reader{args=R}=kvx:take((kvx:bot(kvx:load_reader(2)))#reader{args=-1,dir=0}),
+                   lists:map(fun(#'Organization'{name=X,url=Y}) -> {X,Y} end,R).
 
 boot() ->
     kvx:join(),
