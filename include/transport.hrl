@@ -7,6 +7,8 @@
 -type transportType() :: ship | cargo | flight.
 
 -record('Transport',   { id          = [] :: [] | binary(),
+                         prev        = [] :: [] | binary(),
+                         next        = [] :: [] | binary(),
                          name        = [] :: [] | binary(),
                          provider    = [] :: [] | #'Organization'{},
                          contract    = [] :: [] | #'Contract'{},

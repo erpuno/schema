@@ -6,6 +6,8 @@
 -include("location.hrl").
 
 -record('Delivery',   { id          = [] :: [] | binary(),
+                        prev        = [] :: [] | binary(),
+                        next        = [] :: [] | binary(),
                         name        = [] :: [] | binary(),
                         transport   = [] :: [] | #'Transport'{},
                         material    = [] :: [] | #'Material'{},

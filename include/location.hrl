@@ -6,6 +6,8 @@
 -type locationType() :: normal | extra.
 
 -record('Location',   { id          = [] :: [] | binary(),
+                        prev        = [] :: [] | binary(),
+                        next        = [] :: [] | binary(),
                         name        = [] :: [] | binary(),
                         country     = [] :: [] | binary(),
                         city        = [] :: [] | binary(),

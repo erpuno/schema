@@ -4,6 +4,8 @@
 -include("location.hrl").
 
 -record('Branch',   { id          = [] :: [] | binary(),
+                      prev        = [] :: [] | binary(),
+                      next        = [] :: [] | binary(),
                       name        = [] :: [] | #'Location'{} }).
 
 -endif.
