@@ -2,8 +2,9 @@
 -compile(export_all).
 -behaviour(application).
 -behaviour(supervisor).
--include_lib("kvx/include/metainfo.hrl").
--include_lib("kvx/include/kvx.hrl").
+-include_lib("kvs/include/metainfo.hrl").
+-include_lib("kvs/include/cursors.hrl").
+-include_lib("kvs/include/kvs.hrl").
 -include("buyer.hrl").
 -include("transport.hrl").
 -include("seller.hrl").
@@ -39,16 +40,16 @@ tables() -> [ #table  { name = 'Buyer',        fields = record_info(fields, 'Buy
 
 contra_agents() -> contra_agents.
 owner_group()   -> owner_group.
-group()         -> #reader{args=R}=kvx:take((kvx:bot(kvx:load_reader(1)))#reader{args=-1,dir=0}),
+group()         -> #reader{args=R}=kvs:take((kvs:bot(kvs:load_reader(1)))#reader{args=-1,dir=0}),
                    lists:map(fun(#'Organization'{name=X,url=Y}) -> {X,Y} end,R).
-parties()       -> #reader{args=R}=kvx:take((kvx:bot(kvx:load_reader(2)))#reader{args=-1,dir=0}),
+parties()       -> #reader{args=R}=kvs:take((kvs:bot(kvs:load_reader(2)))#reader{args=-1,dir=0}),
                    lists:map(fun(#'Organization'{name=X,url=Y}) -> {X,Y} end,R).
 
 boot() ->
-    kvx:join(),
+    kvs:join(),
     Self = owner_group(),
     Party = contra_agents(),
-    case {kvx:get(writer,Self),kvx:get(writer,Self)} of
+    case {kvs:get(writer,Self),kvs:get(writer,Self)} of
          {{error,_},{error,_}} ->
 
               Group = [ #'Organization'{name="Synrc",        url="github.com/synrc"},
@@ -62,10 +63,10 @@ boot() ->
                         #'Organization'{name="NYNJA Group" , url="github.com/nynja-mc"},
                         #'Organization'{name="ERP+SCM",      url="github.com/supply"} ],
 
-              [ kvx:save(kvx:writer(X)) || X <- [Self,Party] ],
-              [ kvx:save(kvx:reader(X)) || X <- [Self,Party] ],
-              [ kvx:save(kvx:add((kvx:load_writer(Self))#writer{args=Y}))   || Y <- Group ],
-              [ kvx:save(kvx:add((kvx:load_writer(Party))#writer{args=Y})) || Y <- Parties ],
+              [ kvs:save(kvs:writer(X)) || X <- [Self,Party] ],
+              [ kvs:save(kvs:reader(X)) || X <- [Self,Party] ],
+              [ kvs:save(kvs:add((kvs:load_writer(Self))#writer{args=Y}))   || Y <- Group ],
+              [ kvs:save(kvs:add((kvs:load_writer(Party))#writer{args=Y})) || Y <- Parties ],
               [{group,length(Group)},{parties,length(Parties)}];
                           _ -> skip end.
 
