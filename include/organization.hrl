@@ -1,11 +1,11 @@
 -ifndef(ORGANIZATION_HRL).
 -define(ORGANIZATION_HRL, true).
 
--record('Organization', { id          = [] :: [] | binary(),
-                          prev        = [] :: [] | binary(),
-                          next        = [] :: [] | binary(),
-                          name        = [] :: [] | binary(),
+-include("location.hrl").
+
+-record('Organization', { name        = [] :: [] | binary(),
                           url         = [] :: [] | string(),
+                          location    = [] :: [] | #'Location'{},
                           type        = [] :: term() }).
 
 -endif.

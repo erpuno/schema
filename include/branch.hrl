@@ -3,9 +3,7 @@
 
 -include("location.hrl").
 
--record('Branch',   { id          = [] :: [] | binary(),
-                      prev        = [] :: [] | binary(),
-                      next        = [] :: [] | binary(),
-                      name        = [] :: [] | #'Location'{} }).
+-record('Branch',   { id     = kvs:seq([],[]) :: [] | binary(),
+                      loc    = [] :: [] | #'Location'{} }).
 
 -endif.

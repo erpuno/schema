@@ -5,8 +5,6 @@
 -type granularity() :: kg | tonn.
 
 -record('Material',   { id          = [] :: [] | binary(),
-                        prev        = [] :: [] | binary(),
-                        next        = [] :: [] | binary(),
                         name        = [] :: [] | binary(),
                         units       = [] :: [] | granularity(),
                         amount      = [] :: [] | integer(),
