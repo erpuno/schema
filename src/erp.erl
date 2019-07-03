@@ -28,13 +28,15 @@ partners()   -> kvs:feed("/erp/partners").
 employees(C) -> kvs:feed("/acc/quanterall/" ++ C).
 
 acc_boot() ->
+    case kvs:get(writer,"/acc/quanterall/Varna") of
+        {error,_} ->
     lists:map(fun(#'Branch'{ loc = #'Location'{ city = City }} = B) ->
         Function = list_to_atom(City),
        [ begin
            kvs:append(X,"/acc/quanterall/" ++ City),
            kvs:put(#'PersonCN'{id=X#'Employee'.id,
                                cn=(X#'Employee'.person)#'Person'.cn})
-         end || X <- erp_employees:Function(City) ] end, kvs:feed("/erp/quanterall")).
+         end || X <- erp_employees:Function(City) ] end, kvs:feed("/erp/quanterall")); {ok,_} -> skip end.
 
 erp_boot() ->
     Structure    = [ "/erp/group", "/erp/partners", "/erp/quanterall" ],
