@@ -20,15 +20,24 @@
 
 stop(_)      -> ok.
 init([])     -> {ok, { {one_for_one, 5, 10}, []} }.
-start(_, _)  -> X = supervisor:start_link({local, ?MODULE}, ?MODULE, []), kvs:join(), erp:boot(), X.
-r()          -> application:stop(erp), application:start(erp), boot().
+start(_, _)  -> X = supervisor:start_link({local, ?MODULE}, ?MODULE, []), kvs:join(), erp_boot(), acc_boot(), X.
+r()          -> application:stop(erp), application:start(erp), erp_boot(), acc_boot().
 
 group()      -> kvs:feed("/erp/group").
 partners()   -> kvs:feed("/erp/partners").
-employees(C) -> kvs:feed("/erp/quanterall/" ++ C).
+employees(C) -> kvs:feed("/acc/quanterall/" ++ C).
 
-boot() ->
-    Structure    = [ "/erp/group", "/erp/partners", "/erp/branches/quanterall" ],
+acc_boot() ->
+    lists:map(fun(#'Branch'{ loc = #'Location'{ city = City }} = B) ->
+        Function = list_to_atom(City),
+       [ begin
+           kvs:append(X,"/acc/quanterall/" ++ City),
+           kvs:put(#'PersonCN'{id=X#'Employee'.id,
+                               cn=(X#'Employee'.person)#'Person'.cn})
+         end || X <- erp_employees:Function(City) ] end, kvs:feed("/erp/quanterall")).
+
+erp_boot() ->
+    Structure    = [ "/erp/group", "/erp/partners", "/erp/quanterall" ],
     GroupOrgs    = [ #'Organization'{name="Quanterall", url="quanterall.com"} ],
     HeadBranches = [ #'Branch'{ loc = #'Location'{ city = "Varna",   country = "BG" } },
                      #'Branch'{ loc = #'Location'{ city = "Sophia",  country = "BG" } },
@@ -43,18 +52,9 @@ boot() ->
     case {kvs:get(writer,"/erp/group"),kvs:get(writer,"/erp/partners")} of
          {{error,_},{error,_}} ->
               lists:map(fun(X) -> kvs:writer(X) end, Structure),
+              lists:map(fun(X) -> kvs:append(X,"/erp/quanterall") end, HeadBranches),
               lists:map(fun(X) -> kvs:append(X,"/erp/group") end, GroupOrgs),
-              lists:map(fun(X) -> kvs:append(X,"/erp/partners") end, PartnersOrgs),
-              lists:map(fun(#'Branch'{ loc = #'Location'{ city = City }} = B) ->
-                                  kvs:append(B,"/erp/branches/quanterall"),
-                                  Function = list_to_atom(City),
-                                  [ begin
-                                      kvs:append(X,"/erp/quanterall/" ++ City),
-                                      kvs:put(#'PersonCN'{id=X#'Employee'.id,
-                                                          cn=(X#'Employee'.person)#'Person'.cn})
-                                  end || X <- erp_employees:Function(City) ] end,
-                                  HeadBranches),
-              lists:map(fun(X) -> {X,kvs:feed(X)} end, Structure);
+              lists:map(fun(X) -> kvs:append(X,"/erp/partners") end, PartnersOrgs);
                              _ -> skip end.
 
 metainfo() -> #schema { name = kvs,  tables = tables() }.
