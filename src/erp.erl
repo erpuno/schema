@@ -21,12 +21,14 @@
 
 stop(_)      -> ok.
 init([])     -> {ok, { {one_for_one, 5, 10}, []} }.
-start(_, _)  -> X = supervisor:start_link({local, ?MODULE}, ?MODULE, []), kvs:join(), erp_boot(), acc_boot(), X.
+start(_, _)  -> X = supervisor:start_link({local, ?MODULE}, ?MODULE, []), kvs:join(), erp_boot(), acc_boot(), plm_boot(), X.
 r()          -> application:stop(erp), application:start(erp), erp_boot(), acc_boot().
 
 group()      -> kvs:feed("/erp/group").
 partners()   -> kvs:feed("/erp/partners").
 employees(C) -> kvs:feed("/acc/quanterall/" ++ C).
+
+plm_boot() -> erp_products:plm_boot().
 
 acc_boot() ->
     case kvs:get(writer,"/acc/quanterall/Varna") of
