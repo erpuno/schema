@@ -5,8 +5,8 @@
 
 -type productType() :: virtual | physical.
 
--record('Product', { id           = kvs:seq([],[]) :: [] | binary(),
-                     code         = [] :: [] | term(),
+-record('Product', { code         = [] :: [] | term(),
+                     id           = kvs:seq([],[]) :: [] | binary(),
                      organization = [] :: [] | #'Organization'{},
                      engineer     = [] :: [] | #'Person'{},
                      director     = [] :: [] | #'Person'{},
