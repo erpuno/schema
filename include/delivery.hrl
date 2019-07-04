@@ -9,8 +9,8 @@
                         name        = [] :: [] | binary(),
                         transport   = [] :: [] | #'Transport'{},
                         material    = [] :: [] | #'Material'{},
-                        source      = [] :: [] | #'Location'{},
-                        destination = [] :: [] | #'Location'{},
+                        source      = [] :: [] | #'Loc'{},
+                        destination = [] :: [] | #'Loc'{},
                         type        = [] :: transportType() }).
 
 -endif.

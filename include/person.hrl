@@ -11,7 +11,7 @@
                          cn          = [] :: [] | binary(),
                          name        = [] :: [] | binary(),
                          displayName = [] :: [] | binary(),
-                         location    = [] :: #'Location'{},
+                         location    = [] :: #'Loc'{},
                          type        = [] :: term() }).
 
 -record('PersonCN',    { cn          = [] :: [] | term(),

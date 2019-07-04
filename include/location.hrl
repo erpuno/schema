@@ -3,11 +3,11 @@
 
 -type locationType() :: normal | extra.
 
--record('Location',   { id          = kvs:seq([],[]) :: [] | binary(),
-                        code        = [] :: [] | term(),
-                        country     = [] :: [] | binary(),
-                        city        = [] :: [] | binary(),
-                        address     = [] :: [] | binary(),
-                        type        = [] :: locationType() }).
+-record('Loc',   { id          = kvs:seq([],[]) :: [] | binary(),
+                   code        = [] :: [] | term(),
+                   country     = [] :: [] | binary(),
+                   city        = [] :: [] | binary(),
+                   address     = [] :: [] | binary(),
+                   type        = [] :: locationType() }).
 
 -endif.

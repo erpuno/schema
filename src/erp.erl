@@ -11,6 +11,7 @@
 -include("material.hrl").
 -include("contract.hrl").
 -include("location.hrl").
+-include("product.hrl").
 -include("branch.hrl").
 -include("delivery.hrl").
 -include_lib("kvs/include/kvs.hrl").
@@ -30,7 +31,7 @@ employees(C) -> kvs:feed("/acc/quanterall/" ++ C).
 acc_boot() ->
     case kvs:get(writer,"/acc/quanterall/Varna") of
         {error,_} ->
-    lists:map(fun(#'Branch'{ loc = #'Location'{ city = City }} = B) ->
+    lists:map(fun(#'Branch'{ loc = #'Loc'{ city = City }} = B) ->
         Function = list_to_atom(City),
        [ begin
            kvs:append(X,"/acc/quanterall/" ++ City),
@@ -41,9 +42,9 @@ acc_boot() ->
 erp_boot() ->
     Structure    = [ "/erp/group", "/erp/partners", "/erp/quanterall" ],
     GroupOrgs    = [ #'Organization'{name="Quanterall", url="quanterall.com"} ],
-    HeadBranches = [ #'Branch'{ loc = #'Location'{ city = "Varna",   country = "BG" } },
-                     #'Branch'{ loc = #'Location'{ city = "Sophia",  country = "BG" } },
-                     #'Branch'{ loc = #'Location'{ city = "Plovdiv", country = "BG" } } ],
+    HeadBranches = [ #'Branch'{ loc = #'Loc'{ city = "Varna",   country = "BG" } },
+                     #'Branch'{ loc = #'Loc'{ city = "Sophia",  country = "BG" } },
+                     #'Branch'{ loc = #'Loc'{ city = "Plovdiv", country = "BG" } } ],
     PartnersOrgs = [ #'Organization'{name="NYNJA, Inc.",    url= "nynja.io"},
                      #'Organization'{name="CATALX",         url=[]},
                      #'Organization'{name="FiaTech",        url=[]},
@@ -65,9 +66,10 @@ tables() -> [ #table  { name = 'Buyer',        fields = record_info(fields, 'Buy
               #table  { name = 'Material',     fields = record_info(fields, 'Material') },
               #table  { name = 'Inventory',    fields = record_info(fields, 'Inventory') },
               #table  { name = 'Transport',    fields = record_info(fields, 'Transport') },
-              #table  { name = 'Location',     fields = record_info(fields, 'Location') },
+              #table  { name = 'Loc',     fields = record_info(fields, 'Loc') },
               #table  { name = 'Delivery',     fields = record_info(fields, 'Delivery') },
               #table  { name = 'Branch',       fields = record_info(fields, 'Branch') },
+              #table  { name = 'Product',      fields = record_info(fields, 'Product') },
               #table  { name = 'Contract',     fields = record_info(fields, 'Contract') },
               #table  { name = 'Organization', fields = record_info(fields, 'Organization') },
               #table  { name = 'Person',       fields = record_info(fields, 'Person') },

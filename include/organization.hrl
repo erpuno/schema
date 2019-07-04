@@ -5,7 +5,7 @@
 
 -record('Organization', { name        = [] :: [] | binary(),
                           url         = [] :: [] | string(),
-                          location    = [] :: [] | #'Location'{},
+                          location    = [] :: [] | #'Loc'{},
                           type        = [] :: term() }).
 
 -endif.

@@ -6,7 +6,6 @@
 -include_lib("kvs/include/kvs.hrl").
 -include_lib("kvs/include/cursors.hrl").
 
-
 'Sophia'(Sophia) -> [
   #'Employee' { person = #'Person'{cn = "Ayhan Rashidov"}, branch = Sophia },
   #'Employee' { person = #'Person'{cn = "Nedelcho Delchev"}, branch = Sophia },

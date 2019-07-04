@@ -4,6 +4,6 @@
 -include("location.hrl").
 
 -record('Branch',   { id     = kvs:seq([],[]) :: [] | binary(),
-                      loc    = [] :: [] | #'Location'{} }).
+                      loc    = [] :: [] | #'Loc'{} }).
 
 -endif.

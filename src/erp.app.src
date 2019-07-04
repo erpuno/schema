@@ -1,7 +1,7 @@
 {application, erp,
  [
   {description, "ERP Enterprise Resource Planning"},
-  {vsn, "0.7.2"},
+  {vsn, "0.7.3"},
   {registered, []},
   {applications, [kernel,stdlib, kvs]},
   {mod, { erp, []}},
