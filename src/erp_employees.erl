@@ -49,5 +49,3 @@
   #'Employee' { person = #'Person'{cn = "Hristislav Gospodinov"}, branch = Plovdiv },
   #'Employee' { person = #'Person'{cn = "Hristina Sabeva"}, branch = Plovdiv }
    ].
-
-

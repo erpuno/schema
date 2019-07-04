@@ -21,15 +21,15 @@
 
 stop(_)      -> ok.
 init([])     -> {ok, { {one_for_one, 5, 10}, []} }.
-start(_, _)  -> X = supervisor:start_link({local, ?MODULE}, ?MODULE, []), kvs:join(), erp_boot(), acc_boot(), plm_boot(), X.
-r()          -> application:stop(erp), application:start(erp), erp_boot(), acc_boot().
+start(_, _)  -> X = supervisor:start_link({local, ?MODULE}, ?MODULE, []),
+                kvs:join(), erp_boot(), acc_boot(), plm_boot(), pay_boot(), X.
 
 group()      -> kvs:feed("/erp/group").
 partners()   -> kvs:feed("/erp/partners").
 employees(C) -> kvs:feed("/acc/quanterall/" ++ C).
 
 plm_boot() -> erp_products:plm_boot().
-
+pay_boot() -> erp_products:pay_boot().
 acc_boot() ->
     case kvs:get(writer,"/acc/quanterall/Varna") of
         {error,_} ->
@@ -68,7 +68,7 @@ tables() -> [ #table  { name = 'Buyer',        fields = record_info(fields, 'Buy
               #table  { name = 'Material',     fields = record_info(fields, 'Material') },
               #table  { name = 'Inventory',    fields = record_info(fields, 'Inventory') },
               #table  { name = 'Transport',    fields = record_info(fields, 'Transport') },
-              #table  { name = 'Loc',     fields = record_info(fields, 'Loc') },
+              #table  { name = 'Loc',          fields = record_info(fields, 'Loc') },
               #table  { name = 'Delivery',     fields = record_info(fields, 'Delivery') },
               #table  { name = 'Branch',       fields = record_info(fields, 'Branch') },
               #table  { name = 'Product',      fields = record_info(fields, 'Product') },
