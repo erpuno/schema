@@ -48,7 +48,7 @@ erp_boot() ->
                      #'Branch'{ loc = #'Loc'{ city = "Sophia",  country = "BG" } },
                      #'Branch'{ loc = #'Loc'{ city = "Plovdiv", country = "BG" } } ],
     PartnersOrgs = [ #'Organization'{name="NYNJA, Inc.",    url= "nynja.io"},
-                     #'Organization'{name="CATALX",         url=[]},
+                     #'Organization'{name="Catalx Exchange Inc.", url="catalx.io"},
                      #'Organization'{name="FiaTech",        url=[]},
                      #'Organization'{name="3Stars",         url=[]},
                      #'Organization'{name="SwissEMX",       url=[]},
