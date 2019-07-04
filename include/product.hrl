@@ -7,10 +7,11 @@
 
 -record('Product', { code         = [] :: [] | term(),
                      id           = kvs:seq([],[]) :: [] | binary(),
-                     organization = [] :: [] | #'Organization'{},
+                     url          = [] :: [] | binary() | list(),
                      engineer     = [] :: [] | #'Person'{},
                      director     = [] :: [] | #'Person'{},
                      owner        = [] :: [] | #'Person'{},
+                     organization = [] :: [] | #'Organization'{},
                      type         = [] :: productType() }).
 
 -endif.
