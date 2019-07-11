@@ -56,6 +56,7 @@ staff("CATALX") ->
 
 assignees() ->
    lists:map(fun(#'Product'{code=C} = P) ->
-      lists:map(fun(#'Person'{}=Person) -> kvs:append(Person,"/plm/"++C++"/staff") end,staff(C))
+      case kvs:get(writer,"/plm/"++C++"/staff") of
+           {error,_} -> lists:map(fun(#'Person'{}=Person) -> kvs:append(Person,"/plm/"++C++"/staff") end,staff(C));
+           {ok,_} -> skip end
       end, products()).
-
