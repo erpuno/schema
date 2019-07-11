@@ -39,6 +39,7 @@ tables() -> [ #table  { name = 'Buyer',        fields = record_info(fields, 'Buy
               #table  { name = 'Inventory',    fields = record_info(fields, 'Inventory') },
               #table  { name = 'Transport',    fields = record_info(fields, 'Transport') },
               #table  { name = 'Loc',          fields = record_info(fields, 'Loc') },
+              #table  { name = 'Acc',          fields = record_info(fields, 'Acc') },
               #table  { name = 'Delivery',     fields = record_info(fields, 'Delivery') },
               #table  { name = 'Investment',   fields = record_info(fields, 'Investment') },
               #table  { name = 'Salary',       fields = record_info(fields, 'Salary') },
