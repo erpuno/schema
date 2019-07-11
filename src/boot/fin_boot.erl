@@ -12,18 +12,18 @@
 boot() ->
    accounts().
 
-acc("NYNJA") ->
-   [ #'Acc'{id = "insurance", rate = {2,70}},
-     #'Acc'{id = "options", rate = {2,10}},
-     #'Acc'{id = "reserved", rate = {2,10}},
-     #'Acc'{id = "R&D", rate = {2,10}}
+acc("NYNJA" = X) ->
+   [ #'Acc'{id = X ++ "/insurance", rate = {2,70}},
+     #'Acc'{id = X ++ "/options", rate = {2,10}},
+     #'Acc'{id = X ++ "/reserved", rate = {2,10}},
+     #'Acc'{id = X ++ "/R&D", rate = {2,10}}
    ];
 
-acc("CATALX") ->
-   [ #'Acc'{id = "insurance", rate = {2,50}},
-     #'Acc'{id = "options", rate = {2,10}},
-     #'Acc'{id = "reserved", rate = {2,15}},
-     #'Acc'{id = "R&D", rate = {2,15}}
+acc("CATALX" = X ) ->
+   [ #'Acc'{id = X ++ "/insurance", rate = {2,50}},
+     #'Acc'{id = X ++ "/options", rate = {2,10}},
+     #'Acc'{id = X ++ "/reserved", rate = {2,15}},
+     #'Acc'{id = X ++ "/R&D", rate = {2,15}}
    ].
 
 payments(C) -> kvs:all("/plm/"++C++"/income").
@@ -38,7 +38,7 @@ accounts() ->
     lists:map(fun(#'Acc'{id=Id, rate=R}=SubAcc) ->
       Address = lists:concat(["/fin/acc/",C]),
       kvs:append(SubAcc,Address),
-      Feed = lists:concat(["/fin/tx/",C,"/",Id]),
+      Feed = lists:concat(["/fin/tx/",Id]),
       case kvs:get(writer, Feed) of
            {error,_} -> lists:map(fun(#'Payment'{invoice=I,price=P, volume=V}=Pay) ->
                         kvs:append(rate(Pay,SubAcc,C), Feed) end, payments(C));
