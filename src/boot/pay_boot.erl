@@ -53,30 +53,7 @@ salaries("CATALX") ->
   #'Payment' { invoice = "DEC-2018-SAL-CX", volume = {0,14000}, price = {0,1}, instrument = "USD", type = fiat }
   ].
 
-investments("NYNJA") ->
- [#'Investment' { id = "INV-NY-0912", volume = {0,100}, price = {0,100}, instrument = "SWAP", type = exchange,
-                  from = "Maxim Sokhatsky" },
-  #'Investment' { id = "INV-NY-0913", volume = {0,300}, price = {0,100}, instrument = "SWAP", type = exchange,
-                  from = "Anton Andonov" }
-  ];
-
-investments("CATALX") ->
- [#'Investment' { id = "INV-CX-1233", volume = {0,300}, price = {0,500}, instrument = "SWAP", type = exchange,
-                  from = "Vyacheslav Kara" },
-  #'Investment' { id = "INV-CX-1234", volume = {0,500}, price = {0,500}, instrument = "SWAP", type = exchange,
-                  from = "Vyacheslav Kara" },
-  #'Investment' { id = "INV-CX-1235", volume = {0,700}, price = {0,500}, instrument = "SWAP", type = exchange,
-                  from = "Vyacheslav Kara" },
-  #'Investment' { id = "INV-CX-1236", volume = {0,100}, price = {0,500}, instrument = "SWAP", type = exchange,
-                  from = "Vyacheslav Kara" }
-  ].
-
 products() -> plm_boot:products().
-
-inv_boot() ->
-   lists:map(fun(#'Product'{code=C} = P) ->
-      lists:map(fun(#'Investment'{}=Pay) -> kvs:append(Pay,"/plm/"++C++"/investments") end,investments(C))
-      end, products()).
 
 sal_boot() ->
    lists:map(fun(#'Product'{code=C} = P) ->
@@ -89,7 +66,6 @@ pay_boot() ->
       end, products()).
 
 boot() ->
-    inv_boot(),
     sal_boot(),
     pay_boot().
 

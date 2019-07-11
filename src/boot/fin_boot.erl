@@ -10,7 +10,8 @@
 -include_lib("kvs/include/cursors.hrl").
 
 boot() ->
-   accounts().
+   accounts(),
+   inv_boot().
 
 acc("NYNJA" = X) ->
    [ #'Acc'{id = X ++ "/insurance", rate = {2,70}},
@@ -46,3 +47,13 @@ accounts() ->
       end
     end, acc(C))
   end, plm_boot:products()).
+
+inv_boot() ->
+   lists:map(fun(#'Product'{code=C} = P) ->
+      Feed = "/plm/"++C++"/investments",
+      case kvs:get(writer,Feed) of
+           {error,_} -> lists:map(fun(#'Person'{cn=N,hours=X}) ->
+                        kvs:append(#'Payment'{invoice=kvs:seq([],[]),volume={0,1},
+                                              price={0,X*50},from=N,type=option},Feed) end,
+                        kvs:all("/plm/"++C++"/staff"));
+              {ok,_} -> skip end  end, plm_boot:products()).
