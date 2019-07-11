@@ -1,6 +1,5 @@
 -module(fin_boot).
 -compile(export_all).
--include("money.hrl").
 -include("person.hrl").
 -include("acc.hrl").
 -include("product.hrl").
@@ -29,10 +28,8 @@ acc("CATALX" = X ) ->
 
 payments(C) -> kvs:all("/plm/"++C++"/income").
 
-mul({A,B},{C,D}) -> {A+C,B*D}.
-
 rate(#'Payment'{price=P, volume=V}=Pay,#'Acc'{id=Id, rate=R}=Acc,C) ->
-  Pay#'Payment'{invoice= kvs:seq([],[]), volume={0,1}, price=mul(R,mul(P,V))}.
+  Pay#'Payment'{invoice= kvs:seq([],[]), volume={0,1}, price=dec:mul(R,dec:mul(P,V))}.
 
 accounts() ->
   lists:map(fun(#'Product'{code=C}) ->
@@ -49,11 +46,15 @@ accounts() ->
   end, plm_boot:products()).
 
 inv_boot() ->
-   lists:map(fun(#'Product'{code=C} = P) ->
+   lists:map(fun(#'Product'{code=C}) ->
+      {ok, #'Acc'{rate= Rate}=Acc} = kvs:get("/fin/acc/" ++ C, C ++ "/options"),
+      Hours = lists:foldl(fun (#'Person'{hours=A},Acc) -> Acc + A end,0,kvs:all("/plm/"++C++"/staff")),
       Feed = "/plm/"++C++"/investments",
       case kvs:get(writer,Feed) of
-           {error,_} -> lists:map(fun(#'Person'{cn=N,hours=X}) ->
-                        kvs:append(#'Payment'{invoice=kvs:seq([],[]),volume={0,1},
-                                              price={0,X*50},from=N,type=option},Feed) end,
+           {error,_} -> lists:map(fun(#'Person'{cn=Person,hours=X}) ->
+                        lists:map(fun(#'Payment'{invoice=I,price=P,volume=V}=Pay) ->
+                        kvs:append(rate(Pay,Acc#'Acc'{rate = dec:mul(Rate,dec:'div'({0,Hours},{0,X}))},C),
+                                "/fin/iban/" ++ Person) end,
+                        kvs:all("/fin/tx/"++C++"/options")) end,
                         kvs:all("/plm/"++C++"/staff"));
               {ok,_} -> skip end  end, plm_boot:products()).
