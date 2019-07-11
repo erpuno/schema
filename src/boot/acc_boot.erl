@@ -1,4 +1,4 @@
--module(erp_employees).
+-module(acc_boot).
 -compile(export_all).
 -include("organization.hrl").
 -include("person.hrl").
@@ -49,3 +49,14 @@
   #'Employee' { person = #'Person'{cn = "Hristislav Gospodinov"}, branch = Plovdiv },
   #'Employee' { person = #'Person'{cn = "Hristina Sabeva"}, branch = Plovdiv }
    ].
+
+boot() ->
+    case kvs:get(writer,"/acc/quanterall/Varna") of
+        {error,_} ->
+    lists:map(fun(#'Branch'{ loc = #'Loc'{ city = City }} = B) ->
+        Function = list_to_atom(City),
+       [ begin
+           kvs:append(X,"/acc/quanterall/" ++ City),
+           kvs:put(#'PersonCN'{id=X#'Employee'.id,
+                               cn=(X#'Employee'.person)#'Person'.cn})
+         end || X <- ?MODULE:Function(City) ] end, kvs:feed("/erp/quanterall")); {ok,_} -> skip end.
