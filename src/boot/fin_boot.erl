@@ -53,7 +53,9 @@ inv_boot() ->
       case kvs:get(writer,Feed) of
            {error,_} -> lists:map(fun(#'Person'{cn=Person,hours=X}) ->
                         lists:map(fun(#'Payment'{invoice=I,price=P,volume=V}=Pay) ->
-                        kvs:append(rate(Pay,Acc#'Acc'{rate = dec:mul(Rate,dec:'div'({0,Hours},{0,X}))},C),
+                        Div = dec:'div'({0,X},{0,Hours}),
+                        io:format("Hours: ~p/~p = ~p~n",[Hours,X,Div]),
+                        kvs:append(rate(Pay,Acc#'Acc'{rate = dec:mul(Rate,Div)},C),
                                 "/fin/iban/" ++ Person) end,
                         kvs:all("/fin/tx/"++C++"/options")) end,
                         kvs:all("/plm/"++C++"/staff"));
