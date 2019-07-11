@@ -24,10 +24,9 @@
 
 stop(_)      -> ok.
 init([])     -> {ok, { {one_for_one, 5, 10}, []} }.
-start(_, _)  -> X = supervisor:start_link({local, ?MODULE}, ?MODULE, []),
-                kvs:join(),
-                [ M:boot() || M <- [ erp_boot, acc_boot, pay_boot, plm_boot ] ],
-                X.
+boot()       -> [ M:boot() || M <- application:get_env(erp,boot,[]) ].
+start(_, _)  -> kvs:join(), erp:boot(),
+                supervisor:start_link({local, ?MODULE}, ?MODULE, []).
 
 group()      -> kvs:feed("/erp/group").
 partners()   -> kvs:feed("/erp/partners").

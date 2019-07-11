@@ -12,6 +12,7 @@
                          name        = [] :: [] | binary(),
                          displayName = [] :: [] | binary(),
                          location    = [] :: #'Loc'{},
+                         hours       = 00 :: integer(),
                          type        = [] :: term() }).
 
 -record('PersonCN',    { cn          = [] :: [] | term(),

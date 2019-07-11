@@ -32,6 +32,30 @@
 products() -> ['NYNJA'(), 'CATALX'()].
 
 boot() ->
+  plm_boot(),
+  assignees().
+
+plm_boot() ->
     case kvs:get(writer,"/plm/products") of
         {error,_} -> lists:map(fun(#'Product'{} = P) -> kvs:append(P,"/plm/products") end, products());
            {ok,_} -> skip end.
+
+staff("NYNJA") ->
+   [ #'Person'{cn = "Georgi Spasov", hours = 8},
+     #'Person'{cn = "Radostin Dimitrov", hours = 4},
+     #'Person'{cn = "Nikolay Dimitrov", hours = 4},
+     #'Person'{cn = "Yuri Maslovsky", hours = 8},
+     #'Person'{cn = "Igor Kharin", hours = 8},
+     #'Person'{cn = "Maxim Sokhatsky", hours = 1}
+   ];
+
+staff("CATALX") ->
+   [ #'Person'{cn = "Pavel Petrov", hours = 8},
+     #'Person'{cn = "Vyacheslav Kara", hours = 8}
+   ].
+
+assignees() ->
+   lists:map(fun(#'Product'{code=C} = P) ->
+      lists:map(fun(#'Person'{}=Person) -> kvs:append(Person,"/plm/"++C++"/staff") end,staff(C))
+      end, products()).
+
