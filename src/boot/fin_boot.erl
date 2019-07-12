@@ -33,12 +33,12 @@ rate(#'Payment'{price=P, volume=V}=Pay,#'Acc'{id=Id, rate=R}=Acc,C) ->
 
 accounts() ->
   lists:map(fun(#'Product'{code=C}) ->
-    lists:map(fun(#'Acc'{id=Id, rate=R}=SubAcc) ->
+    lists:map(fun(#'Acc'{id=Id}=SubAcc) ->
       Address = lists:concat(["/fin/acc/",C]),
       kvs:append(SubAcc,Address),
       Feed = lists:concat(["/fin/tx/",Id]),
       case kvs:get(writer, Feed) of
-           {error,_} -> lists:map(fun(#'Payment'{invoice=I,price=P, volume=V}=Pay) ->
+           {error,_} -> lists:map(fun(#'Payment'{}=Pay) ->
                         kvs:append(rate(Pay,SubAcc,C), Feed) end, payments(C));
              {ok,_} -> skip
       end
@@ -52,11 +52,11 @@ inv_boot() ->
       Feed = "/plm/"++C++"/investments",
       case kvs:get(writer,Feed) of
            {error,_} -> lists:map(fun(#'Person'{cn=Person,hours=X}) ->
-                        lists:map(fun(#'Payment'{invoice=I,price=P,volume=V}=Pay) ->
+                        lists:map(fun(#'Payment'{}=Pay) ->
                         Div = dec:'div'({0,X},{0,Hours}),
-                        io:format("Hours: ~p/~p = ~p~n",[Hours,X,Div]),
-                        kvs:append(rate(Pay,Acc#'Acc'{rate = dec:mul(Rate,Div)},C),
-                                "/fin/iban/" ++ Person) end,
+                        NewPay = rate(Pay,Acc#'Acc'{rate = dec:mul(Rate,Div)},C),
+                        io:format("Pay ~p ~p/~p = ~p~n",[Person,Hours,X,NewPay]),
+                        kvs:append(NewPay,"/fin/iban/" ++ Person) end,
                         kvs:all("/fin/tx/"++C++"/options")) end,
                         kvs:all("/plm/"++C++"/staff"));
               {ok,_} -> skip end  end, plm_boot:products()).
