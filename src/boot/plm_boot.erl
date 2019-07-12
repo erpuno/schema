@@ -50,7 +50,7 @@ staff("NYNJA") ->
    ];
 
 staff("CATALX") ->
-   [ #'Person'{cn = "Pavel Petrov", hours = 8},
+   [ #'Person'{cn = "Nedelcho Delchev", hours = 8},
      #'Person'{cn = "Vyacheslav Kara", hours = 8}
    ].
 
