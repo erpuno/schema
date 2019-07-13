@@ -62,7 +62,7 @@ inv_boot() ->
                   lists:map(fun(#'Payment'{}=Pay) ->
                      Div = dec:'div'({0,X},{0,Hours}),
                      NewPay = rate(Pay,Acc#'Acc'{rate = dec:mul(Rate,Div)},C),
-                     io:format("Person: ~p Div: ~p Rate: ~p ~n",[Person,Div,Rate]),
+                     io:format("Person: ~p X: ~p Div: ~p Rate: ~p ~n",[Person,X,Div,Rate]),
                      kvs:append(NewPay,Feed) end, kvs:all("/fin/tx/"++C++"/options"));
               {ok,_} -> skip
          end end, kvs:all("/plm/"++C++"/staff"))
