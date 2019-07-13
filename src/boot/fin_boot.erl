@@ -54,6 +54,7 @@ inv_boot() ->
    lists:map(fun(#'Product'{code=C}) ->
       {ok, #'Acc'{rate= Rate}=Acc} = kvs:get("/fin/acc/" ++ C, C ++ "/options"),
       Hours = lists:foldl(fun (#'Person'{hours=A},Acc) -> Acc + A end,0,kvs:all("/plm/"++C++"/staff")),
+      io:format("Product: ~p Hours: ~p~n",[C,Hours]),
       lists:map(fun(#'Person'{cn=Person,hours=X}) ->
          Feed = "/fin/iban/" ++ Person,
          case kvs:get(writer,Feed) of
@@ -61,6 +62,7 @@ inv_boot() ->
                   lists:map(fun(#'Payment'{}=Pay) ->
                      Div = dec:'div'({0,X},{0,Hours}),
                      NewPay = rate(Pay,Acc#'Acc'{rate = dec:mul(Rate,Div)},C),
+                     io:format("Person: ~p Div: ~p Rate: ~p ~n",[Person,Div,Rate]),
                      kvs:append(NewPay,Feed) end, kvs:all("/fin/tx/"++C++"/options"));
               {ok,_} -> skip
          end end, kvs:all("/plm/"++C++"/staff"))
