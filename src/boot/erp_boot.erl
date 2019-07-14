@@ -30,8 +30,7 @@ boot() ->
 
     lists:foreach(fun({Feed, Data}) ->
                          case kvs:get(writer, Feed) of
-                              {error,_} -> kvs:writer(Feed),
-                                           lists:map(fun(X) -> kvs:append(X,Feed) end, Data);
+                              {error,_} -> lists:map(fun(X) -> kvs:append(X,Feed) end, Data);
                                       _ -> skip
                          end
                   end, Structure).
