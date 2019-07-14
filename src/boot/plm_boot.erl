@@ -56,8 +56,11 @@ staff("CATALX") ->
 
 assignees() ->
    lists:map(fun(#'Product'{code=C} = P) ->
-      case kvs:get(writer,"/plm/"++C++"/staff") of
-           {error,_} -> lists:map(fun(#'Person'{}=Person) ->
-                        kvs:append(Person,"/plm/"++C++"/staff") end,staff(C));
+      Feed = "/plm/"++C++"/staff",
+      case kvs:get(writer,Feed) of
+           {error,_} -> lists:map(fun(#'Person'{cn=CN}=Person) ->
+                        Id = kvs:seq([],[]),
+                        io:format("Person: ~p CN: ~p~n",[Id,CN]),
+                        kvs:append(Person#'Person'{id=Id},"/plm/"++C++"/staff") end,staff(C));
            {ok,_} -> skip end
       end, products()).
