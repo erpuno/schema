@@ -26,6 +26,8 @@ acc("CATALX" = X ) ->
      #'Acc'{id = X ++ "/R&D", rate = {2,15}}
    ];
 
+% for future FIN releases and multibank accounts
+
 acc(X) ->
    [
      #'Acc'{id = X ++ "/local", rate = {0,0}},
