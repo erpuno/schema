@@ -4,7 +4,7 @@ defmodule ERP.Mixfile do
   def project() do
     [
       app: :erp,
-      version: "0.7.12",
+      version: "0.7.13",
       elixir: "~> 1.7",
       description: "ERP Enterprise Resource Planning",
       package: package(),
