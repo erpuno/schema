@@ -52,7 +52,9 @@ accounts() ->
       Feed = lists:concat(["/fin/tx/",Id]),
       case kvs:get(writer, Feed) of
            {error,_} -> lists:map(fun(#'Payment'{}=Pay) ->
-                        kvs:append(rate(Pay,SubAcc,C), Feed) end, profit(C));
+                        Payment = rate(Pay,SubAcc,C),
+                        [Account,SubAccount] = string:tokens(Id,"/"),
+                        kvs:append(Payment#'Payment'{account=Account,subaccount=SubAccount}, Feed) end, profit(C));
              {ok,_} -> skip
       end
     end, acc(C))
@@ -70,7 +72,8 @@ inv_boot() ->
                   lists:map(fun(#'Payment'{}=Pay) ->
                      Div = dec:'div'({0,X},{0,Hours}),
                      NewPay = rate(Pay,Acc#'Acc'{rate = dec:mul(Rate,Div)},C),
-                     kvs:append(NewPay,Feed) end, kvs:all("/fin/tx/"++C++"/options"));
+                     kvs:append(NewPay#'Payment'{account=Person,subaccount="local"},Feed) end,
+                     kvs:all("/fin/tx/"++C++"/options"));
               {ok,_} -> skip
          end end, Staff)
    end, plm_boot:products()).
