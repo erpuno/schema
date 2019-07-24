@@ -26,6 +26,27 @@ acc("CATALX" = X ) ->
      #'Acc'{id = X ++ "/R&D", rate = {2,15}}
    ];
 
+acc("FinaTech-Evoli" = X ) ->
+   [ #'Acc'{id = X ++ "/insurance", rate = {2,50}},
+     #'Acc'{id = X ++ "/options", rate = {2,10}},
+     #'Acc'{id = X ++ "/reserved", rate = {2,15}},
+     #'Acc'{id = X ++ "/R&D", rate = {2,15}}
+   ];
+
+acc("FinaTech-Stamps" = X ) ->
+   [ #'Acc'{id = X ++ "/insurance", rate = {2,50}},
+     #'Acc'{id = X ++ "/options", rate = {2,10}},
+     #'Acc'{id = X ++ "/reserved", rate = {2,15}},
+     #'Acc'{id = X ++ "/R&D", rate = {2,15}}
+   ];
+
+acc("FinaTech-Bynk" = X ) ->
+   [ #'Acc'{id = X ++ "/insurance", rate = {2,50}},
+     #'Acc'{id = X ++ "/options", rate = {2,10}},
+     #'Acc'{id = X ++ "/reserved", rate = {2,15}},
+     #'Acc'{id = X ++ "/R&D", rate = {2,15}}
+   ];
+
 % for future FIN releases and multibank accounts
 
 acc(X) ->

@@ -16,9 +16,9 @@ boot() ->
                      #'Branch'{ loc = #'Loc'{ city = "Sophia",  country = "BG" } },
                      #'Branch'{ loc = #'Loc'{ city = "Plovdiv", country = "BG" } } ],
 
-    PartnersOrgs = [ #'Organization'{name="NYNJA, Inc.",    url= "nynja.io"},
+    PartnersOrgs = [ #'Organization'{name="NYNJA, Inc.",          url="nynja.io"},
                      #'Organization'{name="Catalx Exchange Inc.", url="catalx.io"},
-                     #'Organization'{name="FiaTech",        url=[]},
+                     #'Organization'{name="FinaTech",             url="finatech.se"},
                      #'Organization'{name="3Stars",         url=[]},
                      #'Organization'{name="SwissEMX",       url=[]},
                      #'Organization'{name="HistoricalPark", url=[]},
@@ -29,9 +29,8 @@ boot() ->
                      {"/erp/quanterall", HeadBranches}],
 
     lists:foreach(fun({Feed, Data}) ->
-                         case kvs:get(writer, Feed) of
-                              {error,_} -> lists:map(fun(X) -> kvs:append(X,Feed) end, Data);
-                                      _ -> skip
-                         end
+        case kvs:get(writer, Feed) of
+             {ok,_} -> skip;
+          {error,_} -> lists:map(fun(X) ->
+                       kvs:append(X,Feed) end, Data) end
                   end, Structure).
-

@@ -29,7 +29,47 @@
               owner        = #'Person'{cn = "Justin Kim"},
               type         = virtual }.
 
-products() -> ['NYNJA'(), 'CATALX'()].
+'FinaTech-Evoli'() ->
+  {ok, FinaTech} = kvs:get("/erp/partners","FinaTech"),
+  #'Product'{ code = "FinaTech-Evoli",
+              id = kvs:seq([],[]),
+              organization = FinaTech,
+              url          = "finatech.se",
+              engineer     = #'Person'{cn = "Vyacheslav Kara"},
+              director     = #'Person'{cn = "Anton Andonov"},
+              owner        = #'Person'{cn = "FinaTech CEO"},
+              type         = virtual }.
+
+'FinaTech-Stamps'() ->
+  {ok, FinaTech} = kvs:get("/erp/partners","FinaTech"),
+  #'Product'{ code = "FinaTech-Stamps",
+              id = kvs:seq([],[]),
+              organization = FinaTech,
+              url          = "finatech.se",
+              engineer     = #'Person'{cn = "Vyacheslav Kara"},
+              director     = #'Person'{cn = "Anton Andonov"},
+              owner        = #'Person'{cn = "FinaTech CEO"},
+              type         = virtual }.
+
+'FinaTech-Bynk'() ->
+  {ok, FinaTech} = kvs:get("/erp/partners","FinaTech"),
+  #'Product'{ code = "FinaTech-Bynk",
+              id = kvs:seq([],[]),
+              organization = FinaTech,
+              url          = "finatech.se",
+              engineer     = #'Person'{cn = "Vyacheslav Kara"},
+              director     = #'Person'{cn = "Anton Andonov"},
+              owner        = #'Person'{cn = "FinaTech CEO"},
+              type         = virtual }.
+
+products() ->
+  [
+    'NYNJA'(),
+    'CATALX'(),
+    'FinaTech-Bynk'(),
+    'FinaTech-Stamps'(),
+    'FinaTech-Evoli'()
+  ].
 
 boot() ->
   plm_boot(),
@@ -49,10 +89,27 @@ staff("NYNJA") ->
      #'Person'{cn = "Maxim Sokhatsky", hours = 1}
    ];
 
+staff("FinaTech-Evoli") ->
+   [ #'Person'{cn = "Teodor Radev", hours = 8},
+     #'Person'{cn = "Pavel Petrov", hours = 4}
+   ];
+
+staff("FinaTech-Stamps") ->
+   [ #'Person'{cn = "Stanislav Dimov", hours = 8},
+     #'Person'{cn = "Stanislav Genchev", hours = 4}
+   ];
+
+staff("FinaTech-Bynk") ->
+   [ #'Person'{cn = "Vyacheslav Kara", hours = 8},
+     #'Person'{cn = "Stanislav Genchev", hours = 4}
+   ];
+
 staff("CATALX") ->
    [ #'Person'{cn = "Nedelcho Delchev", hours = 8},
      #'Person'{cn = "Vyacheslav Kara", hours = 8}
-   ].
+   ];
+
+staff(_) -> [].
 
 assignees() ->
    lists:map(fun(#'Product'{code=C} = P) ->

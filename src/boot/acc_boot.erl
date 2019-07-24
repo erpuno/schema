@@ -27,7 +27,7 @@
   #'Employee' { person = #'Person'{cn = "Polina Nestorova"}, branch = Varna },
   #'Employee' { person = #'Person'{cn = "Radostin Dimitrov"}, branch = Varna },
   #'Employee' { person = #'Person'{cn = "Samir Barguti"}, branch = Varna },
-  #'Employee' { person = #'Person'{cn = "Stan Genchev"}, branch = Varna },
+  #'Employee' { person = #'Person'{cn = "Stanislav Genchev"}, branch = Varna },
   #'Employee' { person = #'Person'{cn = "Teodor Radev"}, branch = Varna },
   #'Employee' { person = #'Person'{cn = "Todor Todorov"}, branch = Varna },
   #'Employee' { person = #'Person'{cn = "Valentin Atanasov"}, branch = Varna },
