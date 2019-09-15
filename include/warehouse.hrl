@@ -2,7 +2,7 @@
 -define(WMS_HRL, true).
 
 -type unitType() :: unit | weight | capacity.
--type productType() :: unit | weight | weight_unit | unit_weight.
+-type goodType() :: unit | weight | weight_unit | unit_weight.
 -type cellType() :: shelf | cell | container | dock | warehouse.
 -type dim() :: {integer(),integer(),integer()}.
 -type barcode() :: ean13 | code128 | [].
@@ -43,7 +43,7 @@
 
 -record('Good', {id = kvs:seq([],[]),
                  name = [],
-                 type = unit :: productType() ,
+                 type = unit :: goodType() ,
                  barcode = [],
                  base_qty = 1,
                  base_weight = 1,
