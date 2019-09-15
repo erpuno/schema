@@ -9,7 +9,7 @@
                      account = [] :: term(),
                      subaccount = [] :: term(),
                      volume = [] :: [] | money(),
-                     price = {0,1} :: money(),
+                     price = {0,1} :: money(), % <<"{0,1}">> ==> epp:parse(ErlangTerm)
                      instrument = [] :: term(),
                      type = [] :: paymentType(),
                      from = [] :: term(),

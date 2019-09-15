@@ -3,6 +3,6 @@
 
 -type fraction_length() :: integer().
 -type digits() :: integer().
--type money() :: {fraction_length(),digits()}.
+-type money() :: {m,fraction_length(),digits()}.
 
 -endif.
