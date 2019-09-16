@@ -6,7 +6,7 @@
 -include("location.hrl").
 -include("person.hrl").
 
--record('Employee',    { id          = kvs:seq([],[]) :: [] | binary(),
+-record('Employee',    { id          = begin timer:sleep(1), kvs:seq([],[]) end :: [] | binary(),
                          person      = [] :: [] | #'Person'{},
                          org         = [] :: [] | #'Organization'{},
                          branch      = [] :: [] | #'Branch'{},
