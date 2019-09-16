@@ -15,9 +15,9 @@
 
 -record('Item', {  id,
                    good,
-                   volume,
+                   volume = {0,1},
                    serial,
-                   price,
+                   price = {0,1},
                    placement}).
 
 -record('Order',  {id = begin kvs:seq([],[]), timer:sleep(1) end,
