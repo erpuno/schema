@@ -5,7 +5,9 @@
 -type goodType() :: unit | weight | weight_unit | unit_weight.
 -type cellType() :: shelf | cell | container | dock | warehouse.
 -type dim() :: {integer(),integer(),integer()}.
--type barcode() :: ean13 | code128 | [].
+-type barcode() :: ean13 | code128 | none.
+-type orderStatus() :: none | filled | inprocess.
+-type itemStatus() :: incart | placed.
 
 -record('Report', {id,
                    date,
@@ -13,19 +15,21 @@
                    cell_out,
                    detail}).
 
--record('Item', {  id,
-                   good,
+-record('Item', {  id = begin timer:sleep(0), kvs:seq([],[]) end,
+                   good = [],
                    volume = {0,1},
-                   serial,
+                   serial = [],
                    price = {0,1},
-                   placement}).
+                   placement = [],
+                   status = incart :: itemStatus() }).
 
--record('Order',  {id = begin kvs:seq([],[]), timer:sleep(1) end,
+-record('Order',  {id = begin timer:sleep(0), kvs:seq([],[]) end,
                    type = in :: in | out,
-                   no,
-                   date,
+                   no = [],
+                   date = os:timestamp(),
                    client :: term(),
-                   goods :: list(#'Item'{})}).
+                   goods :: list(#'Item'{}),
+                   orderStatus = none :: orderStatus() }).
 
 % WMS SPEC
 
