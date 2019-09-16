@@ -29,7 +29,7 @@
                    date = os:timestamp(),
                    client :: term(),
                    goods :: list(#'Item'{}),
-                   orderStatus = none :: orderStatus() }).
+                   status = none :: orderStatus() }).
 
 % WMS SPEC
 
