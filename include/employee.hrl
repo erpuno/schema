@@ -10,6 +10,7 @@
                          person      = [] :: [] | #'Person'{},
                          org         = [] :: [] | #'Organization'{},
                          branch      = [] :: [] | #'Branch'{},
+                         role        = [] :: term(),
                          type        = [] :: term() }).
 
 -endif.
