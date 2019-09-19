@@ -22,7 +22,7 @@
   #'Employee' { person = #'Person'{cn = "Georgi Spasov"}, branch = Varna },
   #'Employee' { person = #'Person'{cn = "Hristo Mirchev"}, branch = Varna },
   #'Employee' { person = #'Person'{cn = "Ivaylo Valkov"}, branch = Varna },
-  #'Employee' { person = #'Person'{cn = "Maxim Sokhatsky"}, branch = Varna },
+  #'Employee' { person = #'Person'{cn = "Maxim Sokhatsky"}, branch = Varna, role = admin },
   #'Employee' { person = #'Person'{cn = "Nikolay Kolev"}, branch = Varna },
   #'Employee' { person = #'Person'{cn = "Polina Nestorova"}, branch = Varna },
   #'Employee' { person = #'Person'{cn = "Radostin Dimitrov"}, branch = Varna },
@@ -45,9 +45,9 @@
   ].
 
 'Plovdiv'(Plovdiv) -> [
-  #'Employee' { person = #'Person'{cn = "Stilyana Runtashka"}, branch = Plovdiv },
-  #'Employee' { person = #'Person'{cn = "Hristislav Gospodinov"}, branch = Plovdiv },
-  #'Employee' { person = #'Person'{cn = "Hristina Sabeva"}, branch = Plovdiv }
+  #'Employee' { person = #'Person'{cn = "Stilyana Runtashka"}, branch = Plovdiv, role = supply_manager },
+  #'Employee' { person = #'Person'{cn = "Hristislav Gospodinov"}, branch = Plovdiv, role = warehouse_manager },
+  #'Employee' { person = #'Person'{cn = "Hristina Sabeva"}, branch = Plovdiv, role = warehouse_employee }
    ].
 
 boot() ->
