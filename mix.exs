@@ -4,7 +4,7 @@ defmodule ERP.Mixfile do
   def project() do
     [
       app: :erp,
-      version: "0.10.0",
+      version: "0.10.2",
       elixir: "~> 1.7",
       description: "ERP Enterprise Resource Planning",
       package: package(),
@@ -28,7 +28,7 @@ defmodule ERP.Mixfile do
 
   def deps() do
     [
-      {:dec, "~> 0.10.0"},
+      {:dec, "~> 0.10.2"},
       {:kvs, "~> 6.9.0"},
       {:rocksdb, "~> 1.3.2"},
       {:ex_doc, "~> 0.11", only: :dev}

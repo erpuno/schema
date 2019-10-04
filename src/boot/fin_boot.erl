@@ -13,57 +13,57 @@ boot() ->
    inv_boot().
 
 acc("NYNJA" = X) ->
-   [ #'Acc'{id = X ++ "/insurance", rate = {dec,2,70}},
-     #'Acc'{id = X ++ "/options", rate = {dec,2,10}},
-     #'Acc'{id = X ++ "/reserved", rate = {dec,2,10}},
-     #'Acc'{id = X ++ "/R&D", rate = {dec,2,10}}
+   [ #'Acc'{id = X ++ "/insurance", rate = {money,2,70}},
+     #'Acc'{id = X ++ "/options", rate = {money,2,10}},
+     #'Acc'{id = X ++ "/reserved", rate = {money,2,10}},
+     #'Acc'{id = X ++ "/R&D", rate = {money,2,10}}
    ];
 
 acc("CATALX" = X ) ->
-   [ #'Acc'{id = X ++ "/insurance", rate = {dec,2,50}},
-     #'Acc'{id = X ++ "/options", rate = {dec,2,10}},
-     #'Acc'{id = X ++ "/reserved", rate = {dec,2,15}},
-     #'Acc'{id = X ++ "/R&D", rate = {dec,2,15}}
+   [ #'Acc'{id = X ++ "/insurance", rate = {money,2,50}},
+     #'Acc'{id = X ++ "/options", rate = {money,2,10}},
+     #'Acc'{id = X ++ "/reserved", rate = {money,2,15}},
+     #'Acc'{id = X ++ "/R&D", rate = {money,2,15}}
    ];
 
 acc("FinaTech-Evoli" = X ) ->
-   [ #'Acc'{id = X ++ "/insurance", rate = {dec,2,50}},
-     #'Acc'{id = X ++ "/options", rate = {dec,2,10}},
-     #'Acc'{id = X ++ "/reserved", rate = {dec,2,15}},
-     #'Acc'{id = X ++ "/R&D", rate = {dec,2,15}}
+   [ #'Acc'{id = X ++ "/insurance", rate = {money,2,50}},
+     #'Acc'{id = X ++ "/options", rate = {money,2,10}},
+     #'Acc'{id = X ++ "/reserved", rate = {money,2,15}},
+     #'Acc'{id = X ++ "/R&D", rate = {money,2,15}}
    ];
 
 acc("FinaTech-Stamps" = X ) ->
-   [ #'Acc'{id = X ++ "/insurance", rate = {dec,2,50}},
-     #'Acc'{id = X ++ "/options", rate = {dec,2,10}},
-     #'Acc'{id = X ++ "/reserved", rate = {dec,2,15}},
-     #'Acc'{id = X ++ "/R&D", rate = {dec,2,15}}
+   [ #'Acc'{id = X ++ "/insurance", rate = {money,2,50}},
+     #'Acc'{id = X ++ "/options", rate = {money,2,10}},
+     #'Acc'{id = X ++ "/reserved", rate = {money,2,15}},
+     #'Acc'{id = X ++ "/R&D", rate = {money,2,15}}
    ];
 
 acc("FinaTech-Bynk" = X ) ->
-   [ #'Acc'{id = X ++ "/insurance", rate = {dec,2,50}},
-     #'Acc'{id = X ++ "/options", rate = {dec,2,10}},
-     #'Acc'{id = X ++ "/reserved", rate = {dec,2,15}},
-     #'Acc'{id = X ++ "/R&D", rate = {dec,2,15}}
+   [ #'Acc'{id = X ++ "/insurance", rate = {money,2,50}},
+     #'Acc'{id = X ++ "/options", rate = {money,2,10}},
+     #'Acc'{id = X ++ "/reserved", rate = {money,2,15}},
+     #'Acc'{id = X ++ "/R&D", rate = {money,2,15}}
    ];
 
 % for future FIN releases and multibank accounts
 
 acc(X) ->
    [
-     #'Acc'{id = X ++ "/local", rate = {dec,0,0}},
-     #'Acc'{id = X ++ "/bpe", rate = {dec,0,0}}
+     #'Acc'{id = X ++ "/local", rate = {money,0,0}},
+     #'Acc'{id = X ++ "/bpe", rate = {money,0,0}}
    ].
 
 profit(C) ->
   lists:map(fun({#'Payment'{volume=Vo1,price=Pr1} = P1,
                  #'Payment'{volume=Vo2,price=Pr2} = P2}) ->
-               P1#'Payment'{volume={dec,0,1},price=dec:sub(dec:mul(Vo1,Pr1),dec:mul(Vo2,Pr2))}
+               P1#'Payment'{volume={money,0,1},price=dec:sub(dec:mul(Vo1,Pr1),dec:mul(Vo2,Pr2))}
         end, lists:zip(kvs:all("/plm/"++C++"/income"),
                        kvs:all("/plm/"++C++"/outcome"))).
 
 rate(#'Payment'{price=P, volume=V}=Pay,#'Acc'{id=Id, rate=R}=Acc,C) ->
-  Pay#'Payment'{invoice= kvs:seq([],[]), volume={dec,0,1}, price=dec:mul(R,dec:mul(P,V))}.
+  Pay#'Payment'{invoice= kvs:seq([],[]), volume={money,0,1}, price=dec:mul(R,dec:mul(P,V))}.
 
 accounts() ->
   lists:map(fun(#'Product'{code=C}) ->
@@ -91,7 +91,7 @@ inv_boot() ->
          case kvs:get(writer,Feed) of
               {error,_} ->
                   lists:map(fun(#'Payment'{}=Pay) ->
-                     Div = dec:'div'({dec,0,X},{dec,0,Hours}),
+                     Div = dec:'div'({money,0,X},{money,0,Hours}),
                      NewPay = rate(Pay,Acc#'Acc'{rate = dec:mul(Rate,Div)},C),
                      kvs:append(NewPay#'Payment'{account=Person,subaccount="local"},Feed) end,
                      kvs:all("/fin/tx/"++C++"/options"));

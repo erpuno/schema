@@ -17,9 +17,9 @@
 
 -record('Item', {  id = begin timer:sleep(0), kvs:seq([],[]) end,
                    good = [],
-                   volume = {dec,0,1},
+                   volume = {'Dec',0,1},
                    serial = [],
-                   price = {dec,0,1},
+                   price = {'Dec',0,1},
                    placement = [],
                    status = incart :: itemStatus() }).
 
