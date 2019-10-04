@@ -7,7 +7,7 @@
 -type dim() :: {integer(),integer(),integer()}.
 -type barcode() :: ean13 | code128 | none.
 -type orderStatus() :: none | filled | inprocess.
--type itemStatus() :: incart | placed.
+-type itemStatus() :: incart | placed | acquired.
 
 -record('Report', {id,
                    date,

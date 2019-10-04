@@ -47,7 +47,7 @@
 'Plovdiv'(Plovdiv) -> [
   #'Employee' { person = #'Person'{cn = "Stilyana Runtashka"}, branch = Plovdiv, role = supply_manager },
   #'Employee' { person = #'Person'{cn = "Hristislav Gospodinov"}, branch = Plovdiv, role = warehouse_manager },
-  #'Employee' { person = #'Person'{cn = "Hristina Sabeva"}, branch = Plovdiv, role = warehouse_employee }
+  #'Employee' { person = #'Person'{cn = "Hristina Sabeva"}, branch = Plovdiv, role = admin }
    ].
 
 boot() ->

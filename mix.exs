@@ -28,7 +28,7 @@ defmodule ERP.Mixfile do
 
   def deps() do
     [
-      {:dec, "~> 0.7.4"},
+      {:dec, "~> 0.10.0"},
       {:kvs, "~> 6.9.0"},
       {:rocksdb, "~> 1.3.2"},
       {:ex_doc, "~> 0.11", only: :dev}
