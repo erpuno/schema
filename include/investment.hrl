@@ -7,7 +7,7 @@
 
 -record('Investment', { id = [] :: [] | term(),
                         volume = [] :: [] | money(),
-                        price = {'Dec',0,1} :: money(),
+                        price = {money,0,1} :: money(),
                         instrument = [] :: term(),
                         type = [] :: investmentType(),
                         from = [] :: term(),
