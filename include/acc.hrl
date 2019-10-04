@@ -5,7 +5,7 @@
 
 -record('Acc', { id   = [] :: [] | binary() | list(),
                  type = [] :: [] | atom(),
-                 ballance = {0,0} :: dec:money(),
-                 rate = {0,0} :: money() }).
+                 ballance = {dec,0,0} :: dec:money(),
+                 rate = {dec,0,0} :: money() }).
 
 -endif.

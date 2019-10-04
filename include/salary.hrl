@@ -7,7 +7,7 @@
 
 -record('Salary', { id = [] :: [] | term(),
                     volume = [] :: [] | money(),
-                    price = {0,1} :: money(),
+                    price = {dec,0,1} :: money(),
                     instrument = [] :: term(),
                     type = [] :: salaryType(),
                     from = [] :: term(),

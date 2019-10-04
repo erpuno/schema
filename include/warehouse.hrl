@@ -17,13 +17,13 @@
 
 -record('Item', {  id = begin timer:sleep(0), kvs:seq([],[]) end,
                    good = [],
-                   volume = {0,1},
+                   volume = {dec,0,1},
                    serial = [],
-                   price = {0,1},
+                   price = {dec,0,1},
                    placement = [],
                    status = incart :: itemStatus() }).
 
--record('Order',  {id = begin timer:sleep(0), kvs:seq([],[]) end,
+-record('Order',  {id = kvs:seq([],[]),
                    type = in :: in | out,
                    no = [],
                    date = os:timestamp(),
@@ -56,7 +56,7 @@
                  unit :: #'Unit'{},
                  ext }).
 
--record('Cell', {id = begin kvs:seq([],[]), timer:sleep(1) end,
+-record('Cell', {id = kvs:seq([],[]),
                  name,
                  type :: cellType(),
                  barcode,
