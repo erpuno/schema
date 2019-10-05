@@ -1,13 +1,13 @@
 -ifndef(SALARY_HRL).
 -define(SALARY_HRL, true).
 
--include("money.hrl").
+-include_lib("dec/include/dec.hrl").
 
 -type salaryType() :: personal | group.
 
 -record('Salary', { id = [] :: [] | term(),
-                    volume = [] :: [] | money(),
-                    price = {money,0,1} :: money(),
+                    volume = [] :: [] | dec:money(),
+                    price = {money,0,1} :: #money{},
                     instrument = [] :: term(),
                     type = [] :: salaryType(),
                     from = [] :: term(),

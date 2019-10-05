@@ -1,15 +1,15 @@
 -ifndef(PAYMENT_HRL).
 -define(PAYMENT_HRL, true).
 
--include("money.hrl").
+-include_lib("dec/include/dec.hrl").
 
 -type paymentType() :: fiat | crypto.
 
 -record('Payment', { invoice = [] :: [] | term(),
                      account = [] :: term(),
                      subaccount = [] :: term(),
-                     volume = [] :: [] | money(),
-                     price = {money,0,1} :: money(), % <<"{0,1}">> ==> epp:parse(ErlangTerm)
+                     volume = [] :: [] | dec:money(),
+                     price = {money,0,1} :: #money{},
                      instrument = [] :: term(),
                      type = [] :: paymentType(),
                      from = [] :: term(),

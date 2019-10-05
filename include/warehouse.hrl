@@ -15,7 +15,7 @@
                    cell_out,
                    detail}).
 
--record('Item', {  id = begin timer:sleep(0), kvs:seq([],[]) end,
+-record('Item', {  id = kvs:seq([],[]),
                    good = [],
                    volume = {money,0,1},
                    serial = [],

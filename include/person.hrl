@@ -7,7 +7,7 @@
 
 % LDAP inetOrgPerson OID=2.16.840.1.113730.3.2.2
 
--record('Person',      { id          = begin timer:sleep(1), kvs:seq([],[]) end :: [] | term(),
+-record('Person',      { id          = kvs:seq([],[]) :: [] | term(),
                          cn          = [] :: [] | binary(),
                          name        = [] :: [] | binary(),
                          displayName = [] :: [] | binary(),
