@@ -1,7 +1,7 @@
 -ifndef(PAYMENT_HRL).
 -define(PAYMENT_HRL, true).
 
--include_lib("dec/include/dec.hrl").
+-include_lib("dec/include/money.hrl").
 
 -type paymentType() :: fiat | crypto.
 

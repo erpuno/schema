@@ -21,7 +21,9 @@
 -include_lib("kvs/include/kvs.hrl").
 -include_lib("kvs/include/metainfo.hrl").
 -include_lib("kvs/include/cursors.hrl").
--export([start/2, stop/1, init/1]).
+-export([start/2, stop/1, init/1, x/0]).
+
+x() -> #'Organization'{}.
 
 stop(_)      -> ok.
 init([])     -> {ok, { {one_for_one, 5, 10}, []} }.
