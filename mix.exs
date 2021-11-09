@@ -17,7 +17,7 @@ defmodule ERP.Mixfile do
       files: ~w(doc lib include src mix.exs LICENSE),
       licenses: ["ISC"],
       maintainers: ["Namdak Tonpa"],
-      name: :erp,
+      name: :schema,
       links: %{"GitHub" => "https://github.com/erpuno/schema"}
     ]
   end
