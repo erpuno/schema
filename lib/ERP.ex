@@ -26,7 +26,7 @@ defmodule ERP do
     fn t ->
       Enum.each(
         Record.extract_all(
-          from_lib: "erp/include/" <> :erlang.list_to_binary(:erlang.atom_to_list(t)) <> ".hrl"
+          from_lib: "schema/include/dict/" <> :erlang.list_to_binary(:erlang.atom_to_list(t)) <> ".hrl"
         ),
         fn {name, definition} ->
           prev = :application.get_env(:kernel, :erp_tables, [])
@@ -50,7 +50,7 @@ defmodule ERP do
       |> Keyword.get(:with, [:erp])
 
     Enum.map(imports, fn mod ->
-      if Code.ensure_compiled?(mod) do
+      if Code.ensure_compiled(mod) do
         upcased = Module.concat([String.upcase(to_string(mod))])
 
         quote do

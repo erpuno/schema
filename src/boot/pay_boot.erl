@@ -1,9 +1,9 @@
 -module(pay_boot).
--compile(export_all).
--include("person.hrl").
--include("product.hrl").
--include("payment.hrl").
--include("investment.hrl").
+-export([boot/0]).
+-include("dict/person.hrl").
+-include("dict/product.hrl").
+-include("dict/payment.hrl").
+-include("dict/investment.hrl").
 -include_lib("kvs/include/kvs.hrl").
 -include_lib("kvs/include/cursors.hrl").
 
@@ -189,12 +189,12 @@ salaries(_) -> [].
 products() -> plm_boot:products().
 
 sal_boot() ->
-   lists:map(fun(#'Product'{code=C} = P) ->
+   lists:map(fun(#'Product'{code=C} = _P) ->
       lists:map(fun(#'Payment'{}=Pay) -> kvs:append(Pay,"/plm/"++C++"/outcome") end,salaries(C))
       end, products()).
 
 pay_boot() ->
-   lists:map(fun(#'Product'{code=C} = P) ->
+   lists:map(fun(#'Product'{code=C} = _P) ->
       lists:map(fun(#'Payment'{}=Pay) -> kvs:append(Pay,"/plm/"++C++"/income") end,payments(C))
       end, products()).
 

@@ -3,10 +3,10 @@ defmodule ERP.Mixfile do
 
   def project() do
     [
-      app: :erp,
-      version: "0.10.4",
+      app: :schema,
+      version: "2.11.0",
       elixir: "~> 1.7",
-      description: "ERP Enterprise Resource Planning",
+      description: "ERP Directory Schema",
       package: package(),
       deps: deps()
     ]
@@ -18,7 +18,7 @@ defmodule ERP.Mixfile do
       licenses: ["ISC"],
       maintainers: ["Namdak Tonpa"],
       name: :erp,
-      links: %{"GitHub" => "https://github.com/erpuno/erp"}
+      links: %{"GitHub" => "https://github.com/erpuno/schema"}
     ]
   end
 
@@ -29,8 +29,8 @@ defmodule ERP.Mixfile do
   def deps() do
     [
       {:dec, "~> 0.10.2"},
-      {:kvs, "~> 6.10.0"},
-      {:rocksdb, "~> 1.3.2"},
+      {:kvs, "~> 8.10.4"},
+      {:rocksdb, "~> 1.6.0"},
       {:ex_doc, "~> 0.11", only: :dev}
     ]
   end

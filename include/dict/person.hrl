@@ -1,9 +1,8 @@
 -ifndef(PERSON_HRL).
 -define(PERSON_HRL, true).
 
--include("organization.hrl").
--include("branch.hrl").
--include("location.hrl").
+-include("dict/location.hrl").
+-include("dict/organization.hrl").
 
 % LDAP inetOrgPerson OID=2.16.840.1.113730.3.2.2
 

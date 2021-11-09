@@ -1,10 +1,11 @@
 -module(acc_boot).
--compile(export_all).
--include("organization.hrl").
--include("person.hrl").
--include("employee.hrl").
+-include("dict/organization.hrl").
+-include("dict/person.hrl").
+-include("dict/employee.hrl").
 -include_lib("kvs/include/kvs.hrl").
 -include_lib("kvs/include/cursors.hrl").
+
+-export([boot/0]).
 
 'Sophia'(Sophia) -> [
   #'Employee' { person = #'Person'{cn = "Ayhan Rashidov"}, branch = Sophia },
@@ -53,7 +54,7 @@
 boot() ->
     case kvs:get(writer,"/acc/quanterall/Varna") of
         {error,_} ->
-    lists:map(fun(#'Branch'{ loc = #'Loc'{ city = City }} = B) ->
+    lists:map(fun(#'Branch'{ loc = #'Loc'{ city = City }} = _B) ->
         Function = list_to_atom(City),
        [ begin
            kvs:append(X,"/acc/quanterall/" ++ City),

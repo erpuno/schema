@@ -1,10 +1,10 @@
 -module(erp_boot).
--compile(export_all).
--include("organization.hrl").
--include("location.hrl").
--include("person.hrl").
--include("product.hrl").
--include("branch.hrl").
+-export([boot/0]).
+-include("dict/organization.hrl").
+-include("dict/location.hrl").
+-include("dict/person.hrl").
+-include("dict/product.hrl").
+-include("dict/branch.hrl").
 -include_lib("kvs/include/kvs.hrl").
 -include_lib("kvs/include/metainfo.hrl").
 -include_lib("kvs/include/cursors.hrl").

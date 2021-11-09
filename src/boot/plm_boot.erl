@@ -1,9 +1,9 @@
 -module(plm_boot).
--compile(export_all).
--include("person.hrl").
--include("product.hrl").
--include("payment.hrl").
--include("investment.hrl").
+-export([boot/0]).
+-include("dict/person.hrl").
+-include("dict/product.hrl").
+-include("dict/payment.hrl").
+-include("dict/investment.hrl").
 -include_lib("kvs/include/kvs.hrl").
 -include_lib("kvs/include/cursors.hrl").
 
@@ -112,7 +112,7 @@ staff("CATALX") ->
 staff(_) -> [].
 
 assignees() ->
-   lists:map(fun(#'Product'{code=C} = P) ->
+   lists:map(fun(#'Product'{code=C} = _P) ->
       Feed = "/plm/"++C++"/staff",
       case kvs:get(writer,Feed) of
            {error,_} -> lists:map(fun(#'Person'{cn=CN}=Person) ->
