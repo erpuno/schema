@@ -7,6 +7,7 @@ defmodule ERP do
       :buyer,
       :contract,
       :crmRole,
+      :assistant,
       :acc,
       :delivery,
       :employee,
