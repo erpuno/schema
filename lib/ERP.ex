@@ -11,6 +11,7 @@ defmodule ERP do
       :orgEmail,
       :fileDesc,
       :acc,
+      :dict,
       :delivery,
       :employee,
       :inventory,
