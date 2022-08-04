@@ -1,16 +1,21 @@
 -ifndef(ORGEMAIL_HRL).
 -define(ORGEMAIL_HRL, true).
 
--record(orgEmail, { id            = kvs:seq([],[]) :: term(),
-                    name          = []  :: binary(),
-                    relaySmtp     = []  :: binary(),
+-record(orgEmail, { id           = kvs:seq([],[]) :: term(),
+                    name         = []  :: binary(),
+                    
+                    relaySmtp    = []  :: binary(),
                     loginSmtp    = []  :: binary(),
                     passwordSmtp = []  :: binary(),
-                    portSmtp      = []  :: integer(),
+                    portSmtp     = []  :: integer(),
+                    sslSmtp      = []  :: boolean(),
+
                     relayPop3    = []  :: binary(),
-                    portPop3      = []  :: integer(),
-                    email         = []  :: []  | binary(),
-                    password      = []  :: []  | binary()
+                    portPop3     = []  :: integer(),
+                    sslPop3      = []  :: boolean(),
+
+                    email        = []  :: []  | binary(),
+                    password     = []  :: []  | binary()
                   }).
 
 -endif.

@@ -8,6 +8,7 @@ defmodule ERP do
       :contract,
       :crmRole,
       :access,
+      :orgEmail,
       :fileDesc,
       :acc,
       :delivery,
