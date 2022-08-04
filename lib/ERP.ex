@@ -12,6 +12,7 @@ defmodule ERP do
       :fileDesc,
       :acc,
       :dict,
+      :notification,
       :delivery,
       :employee,
       :inventory,
