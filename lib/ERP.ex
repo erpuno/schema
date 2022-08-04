@@ -6,6 +6,7 @@ defmodule ERP do
       :branch,
       :buyer,
       :contract,
+      :crmRole,
       :acc,
       :delivery,
       :employee,
