@@ -4,9 +4,9 @@ defmodule ERP.Mixfile do
   def project() do
     [
       app: :schema,
-      version: "3.8.1",
+      version: "3.11.1",
       elixir: "~> 1.7",
-      description: "ERP/1 Directory Schema",
+      description: "ERP.UNO State Enterprise Directory Schema",
       package: package(),
       deps: deps()
     ]

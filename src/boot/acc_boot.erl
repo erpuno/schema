@@ -5,7 +5,7 @@
 -include_lib("kvs/include/kvs.hrl").
 -include_lib("kvs/include/cursors.hrl").
 
--export([boot/0]).
+-export([boot/0,'Sophia'/1, 'Varna'/1, 'Plovdiv'/1]).
 
 'Sophia'(Sophia) -> [
   #'Employee' { person = #'Person'{cn = "Ayhan Rashidov"}, branch = Sophia },
