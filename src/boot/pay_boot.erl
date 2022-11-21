@@ -189,12 +189,12 @@ salaries(_) -> [].
 products() -> plm_boot:products().
 
 sal_boot() ->
-   lists:map(fun(#'Product'{code=C} = _P) ->
+   lists:map(fun(#'Product'{id=C} = _P) ->
       lists:map(fun(#'Payment'{}=Pay) -> kvs:append(Pay,"/plm/"++C++"/outcome") end,salaries(C))
       end, products()).
 
 pay_boot() ->
-   lists:map(fun(#'Product'{code=C} = _P) ->
+   lists:map(fun(#'Product'{id=C} = _P) ->
       lists:map(fun(#'Payment'{}=Pay) -> kvs:append(Pay,"/plm/"++C++"/income") end,payments(C))
       end, products()).
 
