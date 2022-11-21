@@ -10,7 +10,7 @@
 
 boot() ->
    accounts(),
-%   inv_boot(),
+   inv_boot(),
    ok.
 
 acc("NYNJA" = X) ->
@@ -69,7 +69,8 @@ rate(#'Payment'{price=P, volume=V}=Pay,#'Acc'{id=_Id, rate=R}=_Acc,_C) ->
 accounts() ->
   lists:map(fun(#'Product'{id=C,code=Code}) ->
     lists:map(fun(#'Acc'{id=Id}=SubAcc) ->
-      Address = lists:concat(["/fin/acc/",Code]),
+      Address = lists:concat(["/fin/acc/",C]),
+      io:format("Account: ~p~n",[Address]),
       kvs:append(SubAcc,Address),
       Feed = lists:concat(["/fin/tx/",Id]),
       case kvs:get(writer, Feed) of
@@ -83,12 +84,12 @@ accounts() ->
   end, plm_boot:products()).
 
 inv_boot() ->
-   lists:map(fun(#'Product'{id=C,code=Code}) ->
+   lists:map(fun(#'Product'{id=C}) ->
       Staff = kvs:all("/plm/"++C++"/staff"),
-      Feed  = "/fin/acc/" ++ Code,
+      AccFeed  = "/fin/acc/" ++ C,
       Key   = C ++ "/options",
-      io:format("INV: ~p",[{Feed,Key}]),
-      {ok, #'Acc'{rate= Rate}=Acc} = kvs:get(Feed, Key),
+      io:format("INV: ~p",[{AccFeed,Key}]),
+      {ok, #'Acc'{rate= Rate}=Acc} = kvs:get(AccFeed, Key),
       Hours = lists:foldl(fun (#'Person'{hours=A},Acc2) -> Acc2 + A end,0,Staff),
       lists:map(fun(#'Person'{cn=Person,hours=X}) ->
          Feed = "/fin/tx/" ++ Person ++ "/local",

@@ -77,9 +77,7 @@ boot() ->
   assignees().
 
 plm_boot() ->
-    case kvs:get(writer,"/plm/products") of
-        {error,_} -> lists:map(fun(#'Product'{} = P) -> kvs:append(P,"/plm/products") end, products());
-           {ok,_} -> skip end.
+ lists:map(fun(#'Product'{} = P) -> kvs:append(P,"/plm/products") end, products()).
 
 staff("NYNJA") ->
    [ #'Person'{cn = "Georgi Spasov", hours = 8},
@@ -113,8 +111,9 @@ staff("CATALX") ->
 staff(_) -> [].
 
 assignees() ->
-   lists:map(fun(#'Product'{code=C} = _P) ->
+   lists:map(fun(#'Product'{id=C} = _P) ->
       Feed = "/plm/"++C++"/staff",
+      io:format("Product Staff: ~p~n", [Feed]),
       case kvs:get(writer,Feed) of
            {error,_} -> lists:map(fun(#'Person'{cn=CN}=Person) ->
                         Id = kvs:seq([],[]),
