@@ -10,7 +10,8 @@
 
 boot() ->
    accounts(),
-   inv_boot().
+%   inv_boot(),
+   ok.
 
 acc("NYNJA" = X) ->
    [ #'Acc'{id = X ++ "/insurance", rate = {money,2,70}},
@@ -84,7 +85,10 @@ accounts() ->
 inv_boot() ->
    lists:map(fun(#'Product'{id=C,code=Code}) ->
       Staff = kvs:all("/plm/"++C++"/staff"),
-      {ok, #'Acc'{rate= Rate}=Acc} = kvs:get("/fin/acc/" ++ Code, C ++ "/options"),
+      Feed  = "/fin/acc/" ++ Code,
+      Key   = C ++ "/options",
+      io:format("INV: ~p",[{Feed,Key}]),
+      {ok, #'Acc'{rate= Rate}=Acc} = kvs:get(Feed, Key),
       Hours = lists:foldl(fun (#'Person'{hours=A},Acc2) -> Acc2 + A end,0,Staff),
       lists:map(fun(#'Person'{cn=Person,hours=X}) ->
          Feed = "/fin/tx/" ++ Person ++ "/local",

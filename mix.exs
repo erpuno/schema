@@ -30,6 +30,7 @@ defmodule ERP.Mixfile do
     [
       {:dec, "~> 0.10.2"},
       {:kvs, "~> 9.4.8"},
+      {:rocksdb, "~> 1.6.0"},
       {:ex_doc, ">= 0.0.0", only: :dev}
     ]
   end
