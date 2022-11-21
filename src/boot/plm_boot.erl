@@ -1,4 +1,5 @@
 -module(plm_boot).
+-compile(export_all).
 -export([boot/0]).
 -include("dict/person.hrl").
 -include("dict/product.hrl").
@@ -9,8 +10,8 @@
 
 'NYNJA'() ->
   {ok, NYNJA} = kvs:get("/erp/partners","NYNJA, Inc."),
-  #'Product'{ code = "NYNJA",
-              id = kvs:seq([],[]),
+  #'Product'{ id = "NYNJA",
+              code = kvs:seq([],[]),
               organization = NYNJA,
               url          = "nynja.io",
               engineer     = #'Person'{cn = "Maxim Sokhatsky"},
@@ -20,8 +21,8 @@
 
 'CATALX'() ->
   {ok, CATALX} = kvs:get("/erp/partners","Catalx Exchange Inc."),
-  #'Product'{ code = "CATALX",
-              id = kvs:seq([],[]),
+  #'Product'{ id = "CATALX",
+              code = kvs:seq([],[]),
               organization = CATALX,
               url          = "catalx.io",
               engineer     = #'Person'{cn = "Vyacheslav Kara"},
@@ -31,8 +32,8 @@
 
 'FinaTech-Evoli'() ->
   {ok, FinaTech} = kvs:get("/erp/partners","FinaTech"),
-  #'Product'{ code = "FinaTech-Evoli",
-              id = kvs:seq([],[]),
+  #'Product'{ id = "FinaTech-Evoli",
+              code = kvs:seq([],[]),
               organization = FinaTech,
               url          = "finatech.se",
               engineer     = #'Person'{cn = "Vyacheslav Kara"},
@@ -42,8 +43,8 @@
 
 'FinaTech-Stamps'() ->
   {ok, FinaTech} = kvs:get("/erp/partners","FinaTech"),
-  #'Product'{ code = "FinaTech-Stamps",
-              id = kvs:seq([],[]),
+  #'Product'{ id = "FinaTech-Stamps",
+              code = kvs:seq([],[]),
               organization = FinaTech,
               url          = "finatech.se",
               engineer     = #'Person'{cn = "Vyacheslav Kara"},
@@ -53,8 +54,8 @@
 
 'FinaTech-Bynk'() ->
   {ok, FinaTech} = kvs:get("/erp/partners","FinaTech"),
-  #'Product'{ code = "FinaTech-Bynk",
-              id = kvs:seq([],[]),
+  #'Product'{ id = "FinaTech-Bynk",
+              code = kvs:seq([],[]),
               organization = FinaTech,
               url          = "finatech.se",
               engineer     = #'Person'{cn = "Vyacheslav Kara"},

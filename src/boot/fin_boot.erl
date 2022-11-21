@@ -66,7 +66,7 @@ rate(#'Payment'{price=P, volume=V}=Pay,#'Acc'{id=_Id, rate=R}=_Acc,_C) ->
   Pay#'Payment'{invoice= kvs:seq([],[]), volume={money,0,1}, price=dec:mul(R,dec:mul(P,V))}.
 
 accounts() ->
-  lists:map(fun(#'Product'{code=C}) ->
+  lists:map(fun(#'Product'{id=C}) ->
     lists:map(fun(#'Acc'{id=Id}=SubAcc) ->
       Address = lists:concat(["/fin/acc/",C]),
       kvs:append(SubAcc,Address),
@@ -82,7 +82,7 @@ accounts() ->
   end, plm_boot:products()).
 
 inv_boot() ->
-   lists:map(fun(#'Product'{code=C}) ->
+   lists:map(fun(#'Product'{id=C}) ->
       Staff = kvs:all("/plm/"++C++"/staff"),
       {ok, #'Acc'{rate= Rate}=Acc} = kvs:get("/fin/acc/" ++ C, C ++ "/options"),
       Hours = lists:foldl(fun (#'Person'{hours=A},Acc2) -> Acc2 + A end,0,Staff),
