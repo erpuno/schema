@@ -10,10 +10,6 @@ defmodule ERP do
   def start(_, _) do
       :erlang.system_flag(:time_offset, :finalize)
       :kvs.join
-      case :kvs.all('/erp/') do
-           [] -> :erp.boot()
-            _ -> :skip
-      end
       Supervisor.start_link([], strategy: :one_for_one, name: EXO.Supervisor)
   end
 
