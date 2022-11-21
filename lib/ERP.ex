@@ -1,14 +1,30 @@
 defmodule ERP do
+  use Application
+  use Supervisor
   require KVS
   require Record
+
+  def stop(_), do: :ok
+  def init([]), do: {:ok, { {:one_for_one, 5, 10}, []} }
+
+  def start(_, _) do
+      :erlang.system_flag(:time_offset, :finalize)
+      :kvs.join
+      case :kvs.all('/erp/') do
+           [] -> :erp.boot()
+            _ -> :skip
+      end
+      Supervisor.start_link([], strategy: :one_for_one, name: EXO.Supervisor)
+  end
 
   @schema [  :branch,       :buyer,        :contract,    :crmRole,
              :access,       :orgEmail,     :fileDesc,    :acc,
              :dict,         :notification, :delivery,    :employee,
              :inventory,    :material,     :location,    :investment,
              :organization, :person,       :payment,     :seller,
-             :buyer,        :transport,    :warehouse,   :product,     :tic   ]
-
+             :buyer,        :transport,    :warehouse,   :product,
+             :account,      :client,       :card,        :transaction,
+             :currency,     :field       , :program,     :phone   ]
 
   Enum.each(
     @schema,

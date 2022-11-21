@@ -4,7 +4,7 @@ defmodule ERP.Mixfile do
   def project() do
     [
       app: :schema,
-      version: "3.11.3",
+      version: "3.11.4",
       elixir: "~> 1.7",
       description: "ERP.UNO State Enterprise Directory Schema",
       package: package(),
@@ -23,7 +23,7 @@ defmodule ERP.Mixfile do
   end
 
   def application() do
-    [mod: {:erp, []}]
+    [mod: {ERP, []}]
   end
 
   def deps() do
