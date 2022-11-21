@@ -26,7 +26,7 @@ x() -> #'Organization'{}.
 
 stop(_)      -> ok.
 init([])     -> {ok, { {one_for_one, 5, 10}, []} }.
-boot()       -> [ M:boot() || M <- application:get_env(erp,boot,[]) ].
+boot()       -> [ M:boot() || M <- application:get_env(schema,boot,[]) ].
 start(_, _)  -> erlang:system_flag(time_offset, finalize),
                 kvs:join(), erp:boot(),
                 supervisor:start_link({local, ?MODULE}, ?MODULE, []).
