@@ -114,10 +114,8 @@ assignees() ->
    lists:map(fun(#'Product'{id=C} = _P) ->
       Feed = "/plm/"++C++"/staff",
       io:format("Product Staff: ~p~n", [Feed]),
-      case kvs:get(writer,Feed) of
-           {error,_} -> lists:map(fun(#'Person'{cn=CN}=Person) ->
-                        Id = kvs:seq([],[]),
-                        io:format("Person: ~p CN: ~p~n",[Id,CN]),
-                        kvs:append(Person#'Person'{id=Id},"/plm/"++C++"/staff") end,staff(C));
-           {ok,_} -> skip end
+      lists:map(fun(#'Person'{cn=CN}=Person) ->
+         Id = kvs:seq([],[]),
+         io:format("Person: ~p CN: ~p~n",[Id,CN]),
+         kvs:append(Person#'Person'{id=Id},"/plm/"++C++"/staff") end,staff(C))
       end, products()).
