@@ -16,6 +16,7 @@ defmodule ERP do
   @schema [
       :branch,
       :rejectComment,
+      :fileDesc,
       :buyer,
       :contract,
       :acc,
