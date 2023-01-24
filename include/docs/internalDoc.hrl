@@ -1,6 +1,7 @@
 -ifndef(INTERNAL_DOC_HRL).
 -define(INTERNAL_DOC_HRL, true).
 
+-include("dict/project.hrl").
 -include("dict/person.hrl").
 
 -record(internalDoc, { id= [] :: binary(),
@@ -10,7 +11,7 @@
                        xml = [] :: [] | binary(),
                        hash = [] :: binary() | list(),
                        signature = [] :: binary() | list(),
-                       document_type= <<"Внутрішній документ"/utf8>> :: term(),
+                       document_type = [] :: tuple(),
                        nomenclature=[] :: term(),
                        executor=[] :: [] | #'Person'{},
                        approvers = [] :: list(#'Person'{}),
@@ -22,13 +23,15 @@
                        note=[] :: list(),
                        attachments = [] :: list(term()),
                        registered_by=[] :: [] | #'Person'{},
-                       project = [] :: term(),
-                       proc_id = [] :: list(),
+                       project = [] :: [] | #project{},
+                       seq_id = [] :: list(),
                        created_by = [] :: term(),
                        created = [] :: term(),
                        modified_by = [] :: term(),
                        modified = [] :: term(),
-                       template = [] :: term()
+                       template = [] :: term(),
+                       bizTask_initiator = [] :: term(),
+                       toAttention = []
                       }).
 
 -endif.

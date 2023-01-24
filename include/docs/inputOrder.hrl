@@ -1,6 +1,7 @@
 -ifndef(IN_ORDER_HRL).
 -define(IN_ORDER_HRL, true).
 
+-include("dict/project.hrl").
 -include("dict/person.hrl").
 
 -record(inputOrder, { id= [] :: binary(),
@@ -30,14 +31,16 @@
                       registered_by=[] :: [] | #'Person'{},
                       coordination=[] :: list(),
                       topic=[] :: [] | binary(),
-                      to_attention=[] :: [] | list(),
                       attachments = [] :: list(term()),
-                      proc_id = [] :: list(),
+                      seq_id = [] :: list(),
                       reject_comment = [] :: binary(),
                       created_by = [] :: term(),
                       created = [] :: term(),
                       modified_by = [] :: term(),
-                      modified = [] :: term()
+                      modified = [] :: term(),
+                      bizTask_initiator = [] :: term(),
+                      toAttention = [],
+                      project = [] :: [] | #project{}
  }).
 
 

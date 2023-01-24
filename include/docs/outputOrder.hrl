@@ -1,7 +1,9 @@
 -ifndef(OUT_ORDER_HRL).
 -define(OUT_ORDER_HRL, true).
 
+-include("dict/project.hrl").
 -include("dict/person.hrl").
+-include("dict/sendInfo.hrl").
 
 % Вихідний лист
 % Відповідь на адвокатський запит
@@ -9,6 +11,9 @@
 % Відповідь на звернення народного депутата України
 % Відповідь на звернення громадян
 % Відповідь на запит на публічну інформацію
+% 
+% Таблица 19 (стр 22, Модель v4.4)
+
 
 -record(outputOrder, { id= [] :: binary(),
                        guid= [] :: list(),
@@ -17,7 +22,7 @@
                        xml = [] :: [] | binary(),
                        hash = [] :: binary() | list(),
                        signature = [] :: binary() | list(),
-                       document_type= <<"Вихідний документ"/utf8>> :: term(),
+                       document_type = [] :: tuple(),
                        nomenclature=[] :: term(),
                        purpose=[] :: [] | list(),
                        purpose_sev=[] :: [] | list(),
@@ -29,20 +34,22 @@
                        head = [] :: [] | #'Person'{},
                        content= [] :: list(),
                        approvers = [] :: list(#'Person'{}),
-                       signed = [] :: list(#'Person'{}),
+                       signatory = [] :: list(#'Person'{}),
                        send_type = [] :: list(),
-                       sent = no :: yes | no,
+                       sent = [] :: [] | #sendInfo{},
                        registered_by=[] :: [] | #'Person'{},
                        date_send=[] :: [] | calendar:datetime(),
                        note=[] :: list(),
                        attachments = [] :: list(term()),
-                       project = [] :: term(),
-                       proc_id = [] :: list(),
+                       project = [] :: [] | #project{},
+                       seq_id = [] :: list(),
                        created_by = [] :: term(),
                        created = [] :: term(),
                        modified_by = [] :: term(),
                        modified = [] :: term(),
-                       template = [] :: term()
+                       template = [] :: term(),
+                       assistantProcessed = [],
+                       toAttention = []
               }).
 
 -endif.

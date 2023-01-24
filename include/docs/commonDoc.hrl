@@ -3,7 +3,10 @@
 
 -record(commonDoc, {
   id = [] :: term(),
+  seq_id = [] :: [] | binary(),
+  document_atom = [] :: [] | atom(),
   date = [] :: [] | calendar:datetime(),
+  nomenclature = [] :: term(),
   content = [] :: list(),
   corr = [] :: [] | list(),
   branch = [] :: list(),

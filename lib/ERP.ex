@@ -16,6 +16,8 @@ defmodule ERP do
       :organization,
       :person,
       :payment,
+      :project,
+      :sendInfo,
       :seller,
       :buyer,
       :transport,
@@ -27,6 +29,34 @@ defmodule ERP do
       Enum.each(
         Record.extract_all(
           from_lib: "schema/include/dict/" <> :erlang.list_to_binary(:erlang.atom_to_list(t)) <> ".hrl"
+        ),
+        fn {name, definition} ->
+          prev = :application.get_env(:kernel, :erp_tables, [])
+          case :lists.member(name, prev) do
+            true ->
+              :skip
+
+            false ->
+              Record.defrecord(name, definition)
+              :application.set_env(:kernel, :erp_tables, [name | prev])
+          end
+        end
+      )
+    end
+  )
+
+  Enum.each(
+    [
+      :sevDoc,
+      :internalDoc,
+      :inputOrder,
+      :outputOrder,
+      :orgDoc
+    ],
+    fn t ->
+      Enum.each(
+        Record.extract_all(
+          from_lib: "schema/include/docs/" <> :erlang.list_to_binary(:erlang.atom_to_list(t)) <> ".hrl"
         ),
         fn {name, definition} ->
           prev = :application.get_env(:kernel, :erp_tables, [])

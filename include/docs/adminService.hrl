@@ -1,7 +1,9 @@
 -ifndef(ADMIN_SERVICE_HRL).
 -define(ADMIN_SERVICE_HRL, true).
 
--include("dict/person.hrl").
+-include("erp/catalogs/assistantMark.hrl").
+-include("erp/catalogs/project.hrl").
+-include("erp/catalogs/person.hrl").
 
 -record(adminService, { id= [] :: binary(),
                         guid= [] :: list(),
@@ -18,6 +20,8 @@
                         head=[] :: [] | #'Person'{},
                         number_out= [] :: list(),
                         date_out=[] :: calendar:datetime(),
+                        signed=[] :: [] | list(),
+                        topic=[] :: [] | binary(),
                         content= [] :: list(),
                         note=[] :: list(),
                         dueDate=[] :: [] | calendar:datetime(),
@@ -28,12 +32,15 @@
                         registered_by=[] :: [] | #'Person'{},
                         coordination=[] :: list(),
                         attachments = [] :: list(term()),
-                        proc_id = [] :: list(),
+                        seq_id = [] :: list(),
                         reject_comment = [] :: binary(),
                         created_by = [] :: term(),
                         created = [] :: term(),
                         modified_by = [] :: term(),
-                        modified = [] :: term()
+                        modified = [] :: term(),
+                        bizTask_initiator = [] :: term(),
+                        toAttention = #assistantMark{},
+                        project = #project{} :: #project{}
  }).
 
 

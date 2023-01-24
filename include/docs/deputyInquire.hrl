@@ -1,9 +1,11 @@
 -ifndef(DEPUTY_INQUIRE_HRL).
 -define(DEPUTY_INQUIRE_HRL, true).
 
--include("dict/person.hrl").
--include("dict/location.hrl").
--include("dict/address.hrl").
+-include("erp/catalogs/project.hrl").
+-include("erp/catalogs/assistantMark.hrl").
+-include("erp/catalogs/person.hrl").
+-include("erp/catalogs/location.hrl").
+-include("erp/catalogs/address.hrl").
 
 -record(deputyInquire, { id= [] :: binary(),
                          guid= [] :: list(),
@@ -18,19 +20,24 @@
                          nomenclature=[] :: term(),
                          type=[] :: inquire | request | term(),
                          corr=[] :: [] | list(),
-                         signed=[] :: [] | list(),
                          number_out=[] :: [] | list(),
                          date_out=[] :: calendar:datetime(),
+                         signed=[] :: [] | list(),
                          request=[] :: [] | list(),
                          committee=[] :: [] | list(),
                          deputy=[] :: [] | list(),
                          id_ndu=[] :: [] | list(),
                          date_ndu=[] :: [] | calendar:datetime(),
-                         address_ndu=[] :: [] | #'Address'{},
+                         address_ndu=[] :: [] | #'Addr'{},
+                         house_ndu=[] :: [] | binary(),
+                         house=[] :: [] | binary(),
                          content= [] :: list(),
                          topic=[] :: list(),
                          category=[] :: [] | list(),
                          corr_from=[] :: [] | list(),
+                         number_from=[] :: [] | list(),
+                         date_from=[] :: calendar:datetime(),
+                         signed_from=[] :: [] | list(),
                          surname=[] :: list(),
                          name=[] :: list(),
                          patronymic=[] :: list(),
@@ -46,14 +53,17 @@
                          main_sheets=[] :: [] | list(),
                          add_sheets=[] :: [] | list(),
                          registered_by=[] :: [] | #'Person'{},
-                         to_attention=[] :: [] | list(),
                          coordination=[] :: list(),
                          attachments = [] :: list(term()),
-                         proc_id = [] :: list(),
+                         seq_id = [] :: list(),
                          created_by = [] :: term(),
                          created = [] :: term(),
                          modified_by = [] :: term(),
-                         modified = [] :: term()
+                         modified = [] :: term(),
+                         deputy_topic=[] :: list(),
+                         bizTask_initiator = [] :: term(),
+                         toAttention = #assistantMark{},
+                         project = #project{} :: #project{}
  }).
 
 -endif.

@@ -1,14 +1,17 @@
 -ifndef(CITIZEN_INQUIRE_HRL).
 -define(CITIZEN_INQUIRE_HRL, true).
 
--include("dict/person.hrl").
--include("dict/location.hrl").
--include("dict/inquire.hrl").
--include("dict/address.hrl").
+-include("erp/catalogs/project.hrl").
+-include("erp/catalogs/assistantMark.hrl").
+-include("erp/catalogs/person.hrl").
+-include("erp/catalogs/location.hrl").
+-include("erp/catalogs/inquire.hrl").
+-include("erp/catalogs/address.hrl").
 
 -record(citizenInquire, { id= [] :: binary(),
                           guid= [] :: list(),
                           date=[] :: [] | calendar:datetime(),
+                          urgent=[] :: [] | boolean(),
                           xml = [] :: [] | binary(),
                           hash = [] :: binary() | list(),
                           signature = [] :: binary() | list(),
@@ -27,7 +30,8 @@
                           social_status= [] :: list(),
                           koatuu_region=[] :: list(),
                           koatuu_place=[] :: list(),
-                          address=[] :: [] | #'Address'{},
+                          address=[] :: [] | #'Addr'{},
+                          house=[] :: [] | binary(),
                           content=[] :: list(),
                           issue=[] :: list(),
                           note=[] :: list(),
@@ -45,14 +49,17 @@
                           main_sheets=[] :: [] | list(),
                           add_sheets=[] :: [] | list(),
                           registered_by=[] :: [] | #'Person'{},
-                          to_attention=[] :: [] | list(),
+                          topic=[] :: [] | list(),
                           coordination=[] :: list(),
                           attachments = [] :: list(term()),
-                          proc_id = [] :: list(),
+                          seq_id = [] :: list(),
                           created_by = [] :: term(),
                           created = [] :: term(),
                           modified_by = [] :: term(),
-                          modified = [] :: term()
+                          modified = [] :: term(),
+                          bizTask_initiator = [] :: term(),
+                          toAttention = #assistantMark{},
+                          project = #project{} :: #project{}
   }).
 
 -endif.

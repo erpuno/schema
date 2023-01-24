@@ -1,87 +1,102 @@
 -ifndef(SEV_DOC_HRL).
 -define(SEV_DOC_HRL, true).
 
--include("dict/person.hrl").
+-include("dict/project.hrl")
+-include("dict/person.hrl")
 
--record(sevRef, {guid = [] :: [] | binary(), regnum = [] :: [] | binary(), date = [] :: [] | calendar:datetime()}).
+-record(sevRef, {id = [] :: [] | binary(), regnumber = [] :: [] | binary(), regdate = [] :: [] | calendar:datetime(), org = [] :: term(), pid = [] :: [] | binary()}).
 
--record(sevExec, {id=[] :: binary(), erdpo=[]::term(), dueDate=[] :: term(), responsibility=0 :: integer()}).
-
--record(sevTask, {id= [] :: binary(),
-                  guid= erp:guid() :: term(),
-                  taskNum=[] :: term(),
-                  title=[] :: term(),
-                  desc=[] :: term(),
-                  dueDate=[] :: term(),
-                  date=[] :: term(),
-                  control=[] :: [] | integer(),
-                  executors=[] :: list(#sevExec{})
+-record(sevTask, {
+                  id= [] :: binary(),
+                  guid = [] :: binary(),
+                  number = [] :: binary(),
+                  title = [] :: binary(),
+                  executor = [] :: [] | term(),
+                  subexecutors = [] :: [] | list(),
+                  notify = [] :: [] | list(),
+                  control = false :: term(),
+                  dueDate = [] :: [] | calendar:datetime(),
+                  date = [] :: [] | calendar:datetime()
                  }).
 
--record(sevDoc, { id = [] :: binary(),
+-record(sevApprover, {
+                       id = [] :: binary(),
+                       guid = [] :: binary(),
+                       org = [] :: term(),
+                       dueDate = [] :: [] | calendar:datetime()
+}).
+
+-record(sendSevDoc, {
+                id = [] :: binary(),
                 guid = [] :: list(),
-
-% NPA section
-
-                stage = [] :: binary(),
-                urn = [] :: binary(),
-                actGuid = [] :: binary(),
-                actType = [] :: binary(),
-                name = [] :: binary(),
-                description = [] :: binary(),
-                isCreate = [] :: binary(),
-                isCloseStage = [] :: binary(),
-                stateRegNum = [] :: binary(),
-                stateRegDate = [] :: binary(),
-                approver_id = [] :: binary(),
-
-% SEV section
-
-                urgent=0 :: term(),
-                date = [] :: [] | calendar:datetime(),  % registration_time
-                created = [] :: [] | calendar:datetime(),
+                urgent=false :: term(),
+                date = [] :: [] | calendar:datetime(),
+                title = [] :: [] | list(),
                 sending_time = [] :: [] | calendar:datetime(),
-                receiving_time = [] :: [] | calendar:datetime(),
-                sessionid = [] :: [] | binary(),
-                xml = [] :: [] | binary(),
-                hash = [] :: binary() | list(),
-                signature = [] :: binary() | list(),
-                document_type=0 :: term(),
-                registered_by=[] :: [] | #'Person'{},
-                registering_time = [] :: [] | calendar:datetime(),
+                document_type= [] :: term(),
                 purpose=[] :: term(),
-                inAnswerTo=[] :: term(), % SEV Document
-                tasks=[] :: term(),
-                legal=[] :: term(),
-                dueDate=[] :: term(), % SEV Approvals
-                approval=[] :: term(), % {0,"Не погоджено"}, {1,"Погоджено"}, {2,"Погоджено із зауваженнями"}
                 from=[] :: [] | list(),
                 corr=[] :: [] | list(),
-                sign=[] :: [] | list(),
-                executor = [] :: [] | #'Person'{},
-                branch = [] :: list(),
-                head = [] :: [] | #'Person'{},
-                content= [] :: list(),
-                signed = [] :: list(#'Person'{}),
-                send_type = [] :: list(),
-                sent = no :: yes | no,
+                sent = false :: term(),
                 sent_by =[] :: [] | #'Person'{},
-                note=[] :: list(),
                 attachments = [] :: list(term()),
+                approvers = [] :: term(),
+                tasks = [] :: list(),
+                approval_status = [] :: term(),
+                approval_comment = [] :: term(),
+                referred = [] :: term(),
+                referred_tasks = [] :: term(),
                 project = [] :: term(),
-                proc_id = [] :: list(),
-                kind = [] :: list(),
-                annotation = [] :: list(),
+                seq_id = [] :: list(),
+                kind = <<"Лист"/utf8>> :: binary(),
+                content = [] :: list(),
+                main_sheets = [] :: term(),
                 msg_type = [] :: term(),
-                msg_acknow = "2" :: term(),
-                ack_type = [] :: term(),
+                msg_acknow = [] :: term(),
                 created_by = [] :: term(),
-                errorcode = "0" :: binary(),
+                errorcode = [] :: binary(),
                 errortext = [] :: binary(),
                 reg_number = [] :: term(),
-                size = [] :: [] | binary(),
+                reg_date   = [] :: term(),
+                out_reg_number = [] :: term(),
+                out_reg_date = [] :: term(),
                 modified_by = [] :: term(),
                 modified = [] :: term()
               }).
+
+-record(receiveSevDoc, {
+            id = [] :: binary(),
+            guid = [] :: list(),
+            urgent= false :: boolean(),
+            date = [] :: [] | calendar:datetime(),
+            sending_time = [] :: [] | calendar:datetime(),
+            document_type= [] :: term(),
+            registered_by= [] :: [] | #'Person'{},
+            registering_time = [] :: [] | calendar:datetime(),
+            purpose=[] :: term(),
+            from=[] :: [] | list(),
+            corr=[] :: [] | list(),
+            content= [] :: list(),
+            main_sheets = [] :: term(),
+            attachments = [] :: list(term()),
+            project = [] :: [] | #project{},
+            seq_id = [] :: list(),
+            kind = [] :: list(),
+            approvers = [] :: term(),
+            tasks = [] :: list(),
+            approval_status = [] :: term(),
+            approval_comment = [] :: term(),
+            referred = [] :: term(),
+            referred_tasks = [] :: term(),
+            title = [] :: [] | binary(),
+            reg_date = [] :: [] | tuple(),
+            out_reg_date = [] :: [] | tuple(),
+            msg_type = [] :: term(),
+            errortext = [] :: binary(),
+            reg_number = [] :: term(),
+            out_reg_number = [] :: term(),
+            modified_by = [] :: term(),
+            modified = [] :: term()
+          }).
 
 -endif.

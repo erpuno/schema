@@ -1,6 +1,7 @@
 -ifndef(PUBLIC_INQUIRE_HRL).
 -define(PUBLIC_INQUIRE_HRL, true).
 
+-include("dict/project.hrl").
 -include("dict/person.hrl").
 -include("dict/location.hrl").
 -include("dict/inquire.hrl").
@@ -8,6 +9,7 @@
 -record(publicInquire, {  id= [] :: binary(),
                           guid= [] :: list(),
                           date=[] :: [] | calendar:datetime(),
+                          urgent=[] :: [] | boolean(),
                           xml = [] :: [] | binary(),
                           hash = [] :: binary() | list(),
                           signature = [] :: binary() | list(),
@@ -30,7 +32,8 @@
                           phone_number=[] :: list(),
                           koatuu_region=[] :: list(),
                           koatuu_place=[] :: list(),
-                          address=[] :: [] | #'Address'{},
+                          address=[] :: [] | #'Addr'{},
+                          house=[] :: [] | binary(),
                           content=[] :: list(),
                           issue=[] :: list(),
                           issue_type = [] :: list(),
@@ -44,15 +47,18 @@
                           main_sheets=[] :: [] | list(),
                           add_sheets=[] :: [] | list(),
                           registered_by=[] :: [] | #'Person'{},
-                          to_attention=[] :: [] | list(),
+                          topic=[] :: [] | list(),
                           coordination=[] :: list(),
                           attachments = [] :: list(term()),
-                          proc_id = [] :: list(),
+                          seq_id = [] :: list(),
                           created_by = [] :: term(),
                           created = [] :: term(),
                           modified_by = [] :: term(),
                           modified = [] :: term(),
-                          note = [] :: list()
+                          note = [] :: list(),
+                          bizTask_initiator = [] :: term(),
+                          toAttention = [],
+                          project = [] :: [] | #project{}
              }).
 
 -endif.

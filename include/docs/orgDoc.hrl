@@ -1,16 +1,13 @@
 -ifndef(ORG_DOC_HRL).
 -define(ORG_DOC_HRL, true).
 
+-include("dict/project.hrl").
 -include("dict/person.hrl").
 
 -record(orgDoc,  { id= [] :: binary(),
-                   guid= [] :: list(),
-                   urgent=[] :: [] | boolean(),
+                   urgent = false :: false | boolean(),
                    date = [] :: [] | calendar:datetime(),
-                   xml = [] :: [] | binary(),
-                   hash = [] :: binary() | list(),
-                   signature = [] :: binary() | list(),
-                   document_type = <<"Огранізаційно-розпорядчий документ"/utf8>> :: term(),
+                   document_type = [] :: tuple(),
                    nomenclature=[] :: term(),
                    branch=[] :: [] | list(),
                    head=[] :: [] | #'Person'{},
@@ -18,26 +15,24 @@
                    content=[] :: [] | list(),
                    approvers = [] :: list(#'Person'{}),
                    signatory = [] :: [] | list(#'Person'{}),
-                   control=[] :: [] | boolean(),
-                   control_by=[] :: [] | #'Person'{},
-                   notify = [] :: [] | list(#'Person'{}),
-                   dueDate = [] :: [] | calendar:datetime(),
-                   assigned = [] :: [] | #'Person'{},
                    target = [] :: [] | list(#'Person'{}),
-                   canceled = [] :: [] | boolean(),
+                   target_notify = [] :: [] | list(#'Person'{}),
+                   dueDate = [] :: [] | calendar:datetime(),
+                   canceled = false :: false | boolean(),
                    cancelDate = [] :: [] | calendar:datetime(),
-                   registered_by=[] :: [] | #'Person'{},
                    editDate = [] :: [] | calendar:datetime(),
                    note = [] :: list(),
+                   registered_by=[] :: [] | #'Person'{},
                    attachments = [] :: list(term()),
-                   project = [] :: term(),
-                   proc_id = [] :: list(),
+                   project = [] :: [] | #project{},
+                   seq_id = [] :: list(),
                    created_by = [] :: term(),
                    created = [] :: term(),
                    modified_by = [] :: term(),
                    modified = [] :: term(),
-                   template = [] :: term()
-
+                   template = [] :: term(),
+                   bizTask_initiator = [] :: term(),
+                   toAttention = []
 }).
 
 -endif.

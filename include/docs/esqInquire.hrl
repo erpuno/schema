@@ -1,7 +1,9 @@
 -ifndef(ESQ_INQUIRE_HRL).
 -define(ESQ_INQUIRE_HRL, true).
 
--include("dict/person.hrl").
+-include("erp/catalogs/project.hrl").
+-include("erp/catalogs/assistantMark.hrl").
+-include("erp/catalogs/person.hrl").
 
 -record(esqInquire, { id= [] :: binary(),
                       guid= [] :: list(),
@@ -16,15 +18,19 @@
                       surname=[] :: list(),
                       name=[] :: list(),
                       patronymic=[] :: list(),
+                      esq_topic=[] :: list(),
                       category=[] :: [] | list(),
                       number_out=[] :: [] | list(),
+                      date_out=[] :: calendar:datetime(),
                       corr=[] :: [] | list(),
+                      signed=[] :: [] | list(),
                       koatuu_region=[] :: list(),
                       koatuu_place=[] :: list(),
                       topic = [] :: list(),
                       email = [] :: list(),
                       phone_number = [] :: list(),
-                      address=[] :: [] | #'Address'{},
+                      address=[] :: [] | #'Addr'{},
+                      house=[] :: [] | binary(),
                       surname_from=[] :: list(),
                       name_from=[] :: list(),
                       patronymic_from=[] :: list(),
@@ -36,16 +42,18 @@
                       main_sheets=[] :: [] | list(),
                       add_sheets=[] :: [] | list(),
                       registered_by=[] :: [] | #'Person'{},
-                      to_attention=[] :: [] | list(),
                       coordination=[] :: list(),
                       attachments = [] :: list(term()),
-                      proc_id = [] :: list(),
+                      seq_id = [] :: list(),
                       created_by = [] :: term(),
                       created = [] :: term(),
                       modified_by = [] :: term(),
                       modified = [] :: term(),
                       lawCertificate = [] :: binary() | list(),
-                      authorityOrderNumber = [] :: binary() | list()
+                      authorityOrderNumber = [] :: binary() | list(),
+                      bizTask_initiator = [] :: term(),
+                      toAttention = #assistantMark{},
+                      project = #project{} :: #project{}
  }).
 
 -endif.
