@@ -18,6 +18,7 @@ defmodule ERP do
       :buyer,
       :contract,
       :acc,
+      :dict,
       :delivery,
       :employee,
       :inventory,
