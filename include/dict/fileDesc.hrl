@@ -1,7 +1,7 @@
 -ifndef(FILE_DESC_HRL).
 -define(FILE_DESC_HRL, true).
 
--include_lib("schema/include/dict/employee.hrl").
+-include_lib("crm/include/erp/catalogs/employee.hrl").
 
 -record('fileDesc', { id = [] :: [] | binary() | list(),
                       seq_id = [] :: list() | binary(),
@@ -21,7 +21,10 @@
                       type = [] :: [] | binary(),
                       needSign = false :: atom(),
                       template = [] :: [] | binary(),
-                      signInfo = [] :: [] | list()
+                      signInfo = [] :: [] | list(),
+                      needCertification = false :: false | atom(),
+                      certificate = [] :: [] | tuple(),
+                      main = false :: false | atom()
                       }).
 
 -endif.

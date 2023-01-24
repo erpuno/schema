@@ -10,19 +10,19 @@
 -include_lib("kvs/include/cursors.hrl").
 
 boot() ->
-    GroupOrgs    = [ #'Organization'{name="Quanterall", url="quanterall.com"} ],
+    GroupOrgs    = [ #'Organization'{id = "Quanterall", name="Quanterall", url="quanterall.com"} ],
 
     HeadBranches = [ #'Branch'{ loc = #'Loc'{ city = "Varna",   country = "BG" } },
                      #'Branch'{ loc = #'Loc'{ city = "Sophia",  country = "BG" } },
                      #'Branch'{ loc = #'Loc'{ city = "Plovdiv", country = "BG" } } ],
 
-    PartnersOrgs = [ #'Organization'{name="NYNJA, Inc.",          url="nynja.io"},
-                     #'Organization'{name="Catalx Exchange Inc.", url="catalx.io"},
-                     #'Organization'{name="FinaTech",             url="finatech.se"},
-                     #'Organization'{name="3Stars",         url=[]},
-                     #'Organization'{name="SwissEMX",       url=[]},
-                     #'Organization'{name="HistoricalPark", url=[]},
-                     #'Organization'{name="Intralinks",     url=[]} ],
+    PartnersOrgs = [ #'Organization'{id = "NYNJA, Inc.", name="NYNJA, Inc.",          url="nynja.io"},
+                     #'Organization'{id = "Catalx Exchange Inc.", name="Catalx Exchange Inc.", url="catalx.io"},
+                     #'Organization'{id = "FinaTech", name="FinaTech",             url="finatech.se"},
+                     #'Organization'{id = "3Stars", name="3Stars",         url=[]},
+                     #'Organization'{id = "SwissEMX", name="SwissEMX",       url=[]},
+                     #'Organization'{id = "HistoricalPark", name="HistoricalPark", url=[]},
+                     #'Organization'{id = "Intralinks", name="Intralinks",     url=[]} ],
 
     Structure    = [ {"/erp/group", GroupOrgs},
                      {"/erp/partners", PartnersOrgs},

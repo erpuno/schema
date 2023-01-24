@@ -4,9 +4,9 @@ defmodule ERP.Mixfile do
   def project() do
     [
       app: :schema,
-      version: "3.1.0",
+      version: "4.1.0",
       elixir: "~> 1.7",
-      description: "ERP Directory Schema",
+      description: "ERP.UNO State Enterprise Directory Schema",
       package: package(),
       deps: deps()
     ]
@@ -23,15 +23,15 @@ defmodule ERP.Mixfile do
   end
 
   def application() do
-    [mod: {:erp, []}]
+    [mod: {ERP, []}]
   end
 
   def deps() do
     [
       {:dec, "~> 0.10.2"},
-      {:kvs, "~> 8.10.4"},
+      {:kvs, "~> 9.9.0"},
       {:rocksdb, "~> 1.6.0"},
-      {:ex_doc, "~> 0.11", only: :dev}
+      {:ex_doc, ">= 0.0.0", only: :dev}
     ]
   end
 end

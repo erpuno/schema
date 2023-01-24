@@ -5,7 +5,8 @@
 
 -type paymentType() :: fiat | crypto.
 
--record('Payment', { invoice = [] :: [] | term(),
+-record('Payment', { id = [] :: list(),
+                     invoice = [] :: [] | term(),
                      account = [] :: term(),
                      subaccount = [] :: term(),
                      volume = [] :: [] | dec:money(),
