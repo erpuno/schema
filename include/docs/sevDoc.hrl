@@ -4,7 +4,8 @@
 -include("dict/project.hrl")
 -include("dict/person.hrl")
 
--record(sevRef, {id = [] :: [] | binary(), regnumber = [] :: [] | binary(), regdate = [] :: [] | calendar:datetime(), org = [] :: term(), pid = [] :: [] | binary()}).
+-record(dummy0, {}).
+
 
 -record(sevTask, {
                   id= [] :: binary(),
@@ -18,6 +19,14 @@
                   dueDate = [] :: [] | calendar:datetime(),
                   date = [] :: [] | calendar:datetime()
                  }).
+
+-record(sevRef, { id = [] :: [] | binary(),
+                  regnumber = [] :: [] | binary(),
+                  regdate = [] :: [] | term(),
+                  org = [] :: [] | term(),
+                  pid = [] :: [] | binary()
+                 }).
+
 
 -record(sevApprover, {
                        id = [] :: binary(),
