@@ -63,14 +63,29 @@ defmodule ERP do
     end
   )
 
-  Enum.each(
-    [
+  @docs [
       :sevDoc,
       :internalDoc,
       :inputOrder,
       :outputOrder,
       :orgDoc
-    ],
+    ]
+
+  @docs_objs [
+      :sevRef,
+      :sevTask,
+      :sevApprover,
+      :sendSevDoc,
+      :receiveSevDoc,
+      :orgDoc,
+      :internalDoc,
+      :inputOrder,
+      :outputOrder,
+      :orgDoc
+    ]
+
+  Enum.each(
+    @docs,
     fn t ->
       Enum.each(
         Record.extract_all(
@@ -120,6 +135,6 @@ defmodule ERP do
       KVS.table(name: name, fields: a, instance: b)
   end
 
-  def erp(), do: :lists.map(fn x -> table(x) end, @schema)
+  def erp(), do: :lists.map(fn x -> table(x) end, @schema ++ @docs_objs)
 
 end
