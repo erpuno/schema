@@ -1,9 +1,9 @@
 -ifndef(IN_ORDER_HRL).
 -define(IN_ORDER_HRL, true).
 
--include("erp/catalogs/project.hrl").
--include("erp/catalogs/assistantMark.hrl").
--include("erp/catalogs/person.hrl").
+-include_lib("schema/include/erp/catalogs/project.hrl").
+-include_lib("schema/include/erp/catalogs/assistantMark.hrl").
+-include_lib("schema/include/erp/catalogs/person.hrl").
 
 -record(inputOrder, { id= [] :: binary(),
                       guid= [] :: list(),

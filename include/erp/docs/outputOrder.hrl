@@ -1,10 +1,10 @@
 -ifndef(OUT_ORDER_HRL).
 -define(OUT_ORDER_HRL, true).
 
--include("erp/catalogs/project.hrl").
--include("erp/catalogs/assistantMark.hrl").
--include("erp/catalogs/person.hrl").
--include("erp/catalogs/sendInfo.hrl").
+-include_lib("schema/include/erp/catalogs/project.hrl").
+-include_lib("schema/include/erp/catalogs/assistantMark.hrl").
+-include_lib("schema/include/erp/catalogs/person.hrl").
+-include_lib("schema/include/erp/catalogs/sendInfo.hrl").
 
 % Вихідний лист
 % Відповідь на адвокатський запит

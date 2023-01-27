@@ -1,9 +1,9 @@
 -ifndef(INTERNAL_DOC_HRL).
 -define(INTERNAL_DOC_HRL, true).
 
--include("erp/catalogs/project.hrl").
--include("erp/catalogs/assistantMark.hrl").
--include("erp/catalogs/person.hrl").
+-include_lib("schema/include/erp/catalogs/project.hrl").
+-include_lib("schema/include/erp/catalogs/assistantMark.hrl").
+-include_lib("schema/include/erp/catalogs/person.hrl").
 
 -record(internalDoc, { id= [] :: binary(),
                        guid= [] :: list(),

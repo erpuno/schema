@@ -12,13 +12,13 @@
 % ДОДАТОК 028 Справа в порядку виконання постанов у справах про адміністративні правопорушення (Клопотання)
 % ДОДАТОК 059 Матеріали в порядку надання міжнародної правової допомоги (Клопотання)
 
--include("erp/catalogs/dict.hrl").
--include("erp/catalogs/fileDesc.hrl").
--include("erp/catalogs/person.hrl").
--include("erp/catalogs/crimesParty.hrl").
--include("erp/catalogs/location.hrl").
--include("erp/catalogs/organization.hrl").
--include("erp/catalogs/address.hrl").
+-include_lib("schema/include/erp/catalogs/dict.hrl").
+-include_lib("schema/include/erp/catalogs/fileDesc.hrl").
+-include_lib("schema/include/erp/catalogs/person.hrl").
+-include_lib("schema/include/erp/catalogs/crimesParty.hrl").
+-include_lib("schema/include/erp/catalogs/location.hrl").
+-include_lib("schema/include/erp/catalogs/organization.hrl").
+-include_lib("schema/include/erp/catalogs/address.hrl").
 
 % ДОДАТОК 100 Кримінальне провадження про тримання під вартою
 

@@ -1,9 +1,9 @@
 -ifndef(ESQ_INQUIRE_HRL).
 -define(ESQ_INQUIRE_HRL, true).
 
--include("erp/catalogs/project.hrl").
--include("erp/catalogs/assistantMark.hrl").
--include("erp/catalogs/person.hrl").
+-include_lib("schema/include/erp/catalogs/project.hrl").
+-include_lib("schema/include/erp/catalogs/assistantMark.hrl").
+-include_lib("schema/include/erp/catalogs/person.hrl").
 
 -record(esqInquire, { id= [] :: binary(),
                       guid= [] :: list(),

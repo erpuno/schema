@@ -1,8 +1,8 @@
 -ifndef(SEV_DOC_HRL).
 -define(SEV_DOC_HRL, true).
 
--include("erp/catalogs/project.hrl").
--include("erp/catalogs/person.hrl").
+-include_lib("schema/include/erp/catalogs/project.hrl").
+-include_lib("schema/include/erp/catalogs/person.hrl").
 
 -record(sevRef, {id = [] :: [] | binary(), regnumber = [] :: [] | binary(), regdate = [] :: [] | calendar:datetime(), org = [] :: term(), pid = [] :: [] | binary()}).
 

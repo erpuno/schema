@@ -6,12 +6,12 @@
 % Документ-об'єкт: Ухвала Суду
 % На підставі: https://zakon.rada.gov.ua/laws/show/z0860-06
 
--include("erp/catalogs/dict.hrl").
--include("erp/catalogs/person.hrl").
--include("erp/catalogs/crimesParty.hrl").
--include("erp/catalogs/location.hrl").
--include("erp/catalogs/organization.hrl").
--include("erp/catalogs/address.hrl").
+-include_lib("schema/include/erp/catalogs/dict.hrl").
+-include_lib("schema/include/erp/catalogs/person.hrl").
+-include_lib("schema/include/erp/catalogs/crimesParty.hrl").
+-include_lib("schema/include/erp/catalogs/location.hrl").
+-include_lib("schema/include/erp/catalogs/organization.hrl").
+-include_lib("schema/include/erp/catalogs/address.hrl").
 
 -record(courtOrder, {
     id= [] :: binary(),

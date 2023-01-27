@@ -1,9 +1,9 @@
 -ifndef(ORG_DOC_HRL).
 -define(ORG_DOC_HRL, true).
 
--include("erp/catalogs/project.hrl").
--include("erp/catalogs/assistantMark.hrl").
--include("erp/catalogs/person.hrl").
+-include_lib("schema/include/erp/catalogs/project.hrl").
+-include_lib("schema/include/erp/catalogs/assistantMark.hrl").
+-include_lib("schema/include/erp/catalogs/person.hrl").
 
 -record(orgDoc,  { id= [] :: binary(),
                    urgent = false :: false | boolean(),

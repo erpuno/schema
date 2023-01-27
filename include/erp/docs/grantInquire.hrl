@@ -1,7 +1,7 @@
 -ifndef(GRANT_INQUIRE_HRL).
 -define(GRANT_INQUIRE_HRL, true).
 
--include("erp/catalogs/person.hrl").
+-include_lib("schema/include/erp/catalogs/person.hrl").
 
 -record(inquireGrant, { id= [] :: [] | binary(),
                         typeDoc = [] :: list(),
