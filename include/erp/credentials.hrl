@@ -1,9 +1,9 @@
 -ifndef(CREDENTIALS_HRL).
 -define(CREDENTIALS_HRL, true).
 
--include("erp/catalogs/organization.hrl").
--include("erp/catalogs/branch.hrl").
--include("erp/catalogs/employee.hrl").
+-include_lib("schema/include/erp/catalogs/organization.hrl").
+-include_lib("schema/include/erp/catalogs/branch.hrl").
+-include_lib("schema/include/erp/catalogs/employee.hrl").
 
 -record(credentials, { key_type     = []    :: binary(),
                        key_instance = []    :: binary(),

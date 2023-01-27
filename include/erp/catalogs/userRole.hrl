@@ -5,7 +5,6 @@
                    crmRole = [] :: [] | atom() | list(),
                    substUsers = [] :: [] | list(),
                    expired = []
-                
                   }).
-                
+
 -endif.

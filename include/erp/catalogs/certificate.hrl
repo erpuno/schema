@@ -1,7 +1,7 @@
 -ifndef(CERTIFICATE_HRL).
 -define(CERTIFICATE_HRL, true).
 
--include("erp/catalogs/employee.hrl").
+-include_lib("schema/include/erp/catalogs/employee.hrl").
 
 -record('certificate', { id = [] :: [] | binary() | list(),
                          name = [] :: list() | binary(),

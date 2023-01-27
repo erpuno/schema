@@ -1,8 +1,8 @@
 -ifndef(AUTO_TASK_HRL).
 -define(AUTO_TASK_HRL, true).
 
--include("erp/catalogs/assistantMark.hrl").
--include("erp/catalogs/sendInfo.hrl").
+-include_lib("schema/include/erp/catalogs/assistantMark.hrl").
+-include_lib("schema/include/erp/catalogs/sendInfo.hrl").
 
 -record(autoTask, { id = [] :: [] | binary(),
                    date = [] :: [] | calendar:datetime(),

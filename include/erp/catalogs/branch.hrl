@@ -1,8 +1,8 @@
 -ifndef(BRANCH_HRL).
 -define(BRANCH_HRL, true).
 
--include("erp/catalogs/location.hrl").
--include("erp/catalogs/person.hrl").
+-include_lib("schema/include/erp/catalogs/location.hrl").
+-include_lib("schema/include/erp/catalogs/person.hrl").
 
 -record('Branch',   { id     = [] :: [] | binary(),
                       name   = [] :: list(),

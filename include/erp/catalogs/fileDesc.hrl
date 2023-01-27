@@ -1,7 +1,7 @@
 -ifndef(FILE_DESC_HRL).
 -define(FILE_DESC_HRL, true).
 
--include("erp/catalogs/employee.hrl").
+-include_lib("schema/include/erp/catalogs/employee.hrl").
 
 -record('fileDesc', { id = [] :: [] | binary() | list(),
                       seq_id = [] :: list() | binary(),

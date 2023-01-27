@@ -1,7 +1,7 @@
 -ifndef(ADDRESS_HRL).
 -define(ADDRESS_HRL, true).
 
--include("erp/catalogs/location.hrl").
+-include_lib("schema/include/erp/catalogs/location.hrl").
 
 -record('Address', { id            = kvs:seq([],[]) :: term(),
                      name          = [] :: [] | binary(),

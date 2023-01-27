@@ -1,7 +1,7 @@
 -ifndef(NOTIFICATION_HRL).
 -define(NOTIFICATION_HRL, true).
 
--include("erp/catalogs/employee.hrl").
+-include_lib("schema/include/erp/catalogs/employee.hrl").
 
 -record('notification', { id               = [] :: list(),
                           type             = [] :: binary(),

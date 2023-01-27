@@ -1,10 +1,10 @@
 -ifndef(EMPLOYEE_HRL).
 -define(EMPLOYEE_HRL, true).
 
--include("erp/catalogs/organization.hrl").
--include("erp/catalogs/branch.hrl").
--include("erp/catalogs/location.hrl").
--include("erp/catalogs/person.hrl").
+-include_lib("schema/include/erp/catalogs/organization.hrl").
+-include_lib("schema/include/erp/catalogs/branch.hrl").
+-include_lib("schema/include/erp/catalogs/location.hrl").
+-include_lib("schema/include/erp/catalogs/person.hrl").
 
 % Employee{cn="Кримчук Сергій",code="3916",person=Person}
 % EmployeeCode{code="3916",cn="Кримчук Сергій"}
