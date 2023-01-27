@@ -23,7 +23,7 @@ defmodule ERP.Mixfile do
   end
 
   def application() do
-    [mod: {:erp, []}]
+    [mod: {:schema, []}]
   end
 
   def deps() do

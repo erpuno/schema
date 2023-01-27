@@ -1,4 +1,4 @@
--module(erp).
+-module(schema).
 -behaviour(application).
 -behaviour(supervisor).
 -include_lib("kvs/include/kvs.hrl").
