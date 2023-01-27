@@ -1,5 +1,5 @@
-SCHEMA: ERP.UNO Database Model
-==============================
+SCHEMA: Схема Даних ERP.UNO
+===========================
 
 Intro
 -----
