@@ -6,6 +6,8 @@
 -include("erp/catalogs/branch.hrl").
 -include("erp/catalogs/fileDesc.hrl").
 -include("erp/catalogs/orgEmail.hrl").
+-include("erp/catalogs/orgEmail.hrl").
+-include_lib("bpe/include/bpe.hrl").
 
 -record(access, {cn, msg, head}).
 
