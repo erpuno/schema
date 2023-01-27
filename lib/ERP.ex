@@ -13,7 +13,7 @@ defmodule ERP do
       Enum.each(
         Record.extract_all([from_lib: "schema/" <> t, includes: ["include"]]),
         fn {name, definition} ->
-          :io.format '~p', [{name}]
+          # :io.format '~p', [{name}]
           prev = :application.get_env(:kernel, :erp_tables, [])
 
           case :lists.member(name, prev) do

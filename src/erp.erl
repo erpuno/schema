@@ -1,5 +1,6 @@
 -module(erp).
--compile(export_all).
+-behaviour(application).
+-behaviour(supervisor).
 -include_lib("kvs/include/kvs.hrl").
 -include_lib("kvs/include/metainfo.hrl").
 -include_lib("schema/include/erp/access.hrl").
@@ -65,12 +66,10 @@
 -include_lib("schema/include/erp/catalogs/project.hrl").
 -include_lib("schema/include/erp/catalogs/certificate.hrl").
 -include_lib("schema/include/erp/catalogs/docTemplate.hrl").
-
 -include_lib("schema/include/abac/abac.hrl").
 -include_lib("schema/include/abac/objects.hrl").
 -include_lib("schema/include/abac/request.hrl").
 -include_lib("schema/include/abac/subjects.hrl").
-
 -include_lib("form/include/formReg.hrl").
 -include_lib("bpe/include/bpe.hrl").
 -include_lib("form/include/meta.hrl").
@@ -80,12 +79,7 @@
 -include("erp/procChild.hrl").
 -include("erp/report.hrl").
 -include("erp/urgentLink.hrl").
-
-
--behaviour(application).
--behaviour(supervisor).
--compile(export_all).
--export([start/2, stop/1, init/1, atoms/0]).
+-export([start/2, stop/1, init/1, replace/3, metainfo/0, tables/0, pos/2]).
 
 replace(S,A,B) -> re:replace(S,A,B,[global,{return,list}]).
 
