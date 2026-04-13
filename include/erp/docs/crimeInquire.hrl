@@ -1,12 +1,12 @@
 -ifndef(CRIME_INQUIRE_HRL).
 -define(CRIME_INQUIRE_HRL, true).
 
--include_lib("schema/include/erp/catalogs/dict.hrl").
--include_lib("schema/include/erp/catalogs/person.hrl").
--include_lib("schema/include/erp/catalogs/crimesParty.hrl").
--include_lib("schema/include/erp/catalogs/location.hrl").
--include_lib("schema/include/erp/catalogs/organization.hrl").
--include_lib("schema/include/erp/catalogs/address.hrl").
+-include_lib("erp/include/erp/catalogs/dict.hrl").
+-include_lib("erp/include/erp/catalogs/person.hrl").
+-include_lib("erp/include/erp/catalogs/crimesParty.hrl").
+-include_lib("erp/include/erp/catalogs/location.hrl").
+-include_lib("erp/include/erp/catalogs/organization.hrl").
+-include_lib("erp/include/erp/catalogs/address.hrl").
 
 % Продукт: МІА: Документообіг
 % Розширення: МІА: Провадження

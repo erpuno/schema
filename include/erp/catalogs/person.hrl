@@ -1,8 +1,8 @@
 -ifndef(PERSON_HRL).
 -define(PERSON_HRL, true).
 
--include_lib("schema/include/erp/catalogs/location.hrl").
--include_lib("schema/include/erp/catalogs/organization.hrl").
+-include_lib("erp/include/erp/catalogs/location.hrl").
+-include_lib("erp/include/erp/catalogs/organization.hrl").
 
 % LDAP inetOrgPerson OID=2.16.840.1.113730.3.2.2
 

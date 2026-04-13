@@ -1,10 +1,10 @@
 -ifndef(SEND_ORDER_HRL).
 -define(SEND_ORDER_HRL, true).
 
--include_lib("schema/include/erp/catalogs/organization.hrl").
--include_lib("schema/include/erp/catalogs/employee.hrl").
--include_lib("schema/include/erp/catalogs/project.hrl").
--include_lib("schema/include/erp/catalogs/dict.hrl").
+-include_lib("erp/include/erp/catalogs/organization.hrl").
+-include_lib("erp/include/erp/catalogs/employee.hrl").
+-include_lib("erp/include/erp/catalogs/project.hrl").
+-include_lib("erp/include/erp/catalogs/dict.hrl").
 
 
 -record(sendOrder, {id             = [] :: binary(),

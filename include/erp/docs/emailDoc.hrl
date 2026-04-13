@@ -1,9 +1,9 @@
 -ifndef(EMAIL_DOC_HRL).
 -define(EMAIL_DOC_HRL, true).
 
--include_lib("schema/include/erp/catalogs/person.hrl").
--include_lib("schema/include/erp/catalogs/orgEmail.hrl").
--include_lib("schema/include/erp/catalogs/project.hrl").
+-include_lib("erp/include/erp/catalogs/person.hrl").
+-include_lib("erp/include/erp/catalogs/orgEmail.hrl").
+-include_lib("erp/include/erp/catalogs/project.hrl").
 
 -record(emailReceiver, {  id            = []    :: binary(),
                           corr          = []    :: [] | #'Person'{}

@@ -3,73 +3,73 @@
 -behaviour(supervisor).
 -include_lib("kvs/include/kvs.hrl").
 -include_lib("kvs/include/metainfo.hrl").
--include_lib("schema/include/erp/access.hrl").
--include_lib("schema/include/erp/npaReport.hrl").
--include_lib("schema/include/erp/credentials.hrl").
--include_lib("schema/include/erp/templateReg.hrl").
--include_lib("schema/include/erp/sign.hrl").
--include_lib("schema/include/erp/docs/petition.hrl").
--include_lib("schema/include/erp/docs/courtOrder.hrl").
--include_lib("schema/include/erp/docs/crimeInquire.hrl").
--include_lib("schema/include/erp/catalogs/crimes.hrl").
--include_lib("schema/include/erp/catalogs/crimesParty.hrl").
--include_lib("schema/include/erp/docs/crimeInquire.hrl").
--include_lib("schema/include/erp/catalogs/sign.hrl").
--include_lib("schema/include/erp/catalogs/crmRole.hrl").
--include_lib("schema/include/erp/catalogs/address.hrl").
--include_lib("schema/include/erp/catalogs/assistantMark.hrl").
--include_lib("schema/include/erp/catalogs/location.hrl").
--include_lib("schema/include/erp/catalogs/koatuu.hrl").
--include_lib("schema/include/erp/catalogs/dict.hrl").
--include_lib("schema/include/erp/catalogs/topic.hrl").
--include_lib("schema/include/erp/catalogs/userGroup.hrl").
--include_lib("schema/include/erp/catalogs/docLabel.hrl").
--include_lib("schema/include/erp/catalogs/holiday.hrl").
--include_lib("schema/include/erp/catalogs/deedCat.hrl").
--include_lib("schema/include/erp/catalogs/journalFilter.hrl").
--include_lib("schema/include/erp/catalogs/logsFilter.hrl").
--include_lib("schema/include/erp/catalogs/organization.hrl").
--include_lib("schema/include/erp/catalogs/rejectComment.hrl").
--include_lib("schema/include/erp/catalogs/sendInfo.hrl").
--include_lib("schema/include/erp/docs/bizTask.hrl").
--include_lib("schema/include/erp/docs/autoTask.hrl").
--include_lib("schema/include/erp/docs/notifyTask.hrl").
--include_lib("schema/include/erp/docs/controlTask.hrl").
--include_lib("schema/include/erp/docs/citizenInquire.hrl").
--include_lib("schema/include/erp/docs/deputyInquire.hrl").
--include_lib("schema/include/erp/docs/esqInquire.hrl").
--include_lib("schema/include/erp/docs/adminService.hrl").
--include_lib("schema/include/erp/docs/inputOrder.hrl").
--include_lib("schema/include/erp/docs/internalDoc.hrl").
--include_lib("schema/include/erp/docs/orgDoc.hrl").
--include_lib("schema/include/erp/docs/outputOrder.hrl").
--include_lib("schema/include/erp/docs/sevDoc.hrl").
--include_lib("schema/include/erp/docs/publicInquire.hrl").
--include_lib("schema/include/erp/docs/emailDoc.hrl").
--include_lib("schema/include/erp/docs/sendOrder.hrl").
--include_lib("schema/include/erp/catalogs/search.hrl").
--include_lib("schema/include/erp/doclink.hrl").
--include_lib("schema/include/erp/constructor.hrl").
--include_lib("schema/include/erp/docs/commonDoc.hrl").
--include_lib("schema/include/erp/docs/grantInquire.hrl").
--include_lib("schema/include/erp/docs/grantPermission.hrl").
--include_lib("schema/include/erp/catalogs/branch.hrl").
--include_lib("schema/include/erp/catalogs/position.hrl").
--include_lib("schema/include/erp/catalogs/person.hrl").
--include_lib("schema/include/erp/catalogs/employee.hrl").
--include_lib("schema/include/erp/catalogs/deputy.hrl").
--include_lib("schema/include/erp/catalogs/userRole.hrl").
--include_lib("schema/include/erp/catalogs/chatMessage.hrl").
--include_lib("schema/include/erp/catalogs/orgEmail.hrl").
--include_lib("schema/include/erp/catalogs/fileDesc.hrl").
--include_lib("schema/include/erp/catalogs/tabInfo.hrl").
--include_lib("schema/include/erp/catalogs/project.hrl").
--include_lib("schema/include/erp/catalogs/certificate.hrl").
--include_lib("schema/include/erp/catalogs/docTemplate.hrl").
--include_lib("schema/include/abac/abac.hrl").
--include_lib("schema/include/abac/objects.hrl").
--include_lib("schema/include/abac/request.hrl").
--include_lib("schema/include/abac/subjects.hrl").
+-include_lib("erp/include/erp/access.hrl").
+-include_lib("erp/include/erp/npaReport.hrl").
+-include_lib("erp/include/erp/credentials.hrl").
+-include_lib("erp/include/erp/templateReg.hrl").
+-include_lib("erp/include/erp/sign.hrl").
+-include_lib("erp/include/erp/docs/petition.hrl").
+-include_lib("erp/include/erp/docs/courtOrder.hrl").
+-include_lib("erp/include/erp/docs/crimeInquire.hrl").
+-include_lib("erp/include/erp/catalogs/crimes.hrl").
+-include_lib("erp/include/erp/catalogs/crimesParty.hrl").
+-include_lib("erp/include/erp/docs/crimeInquire.hrl").
+-include_lib("erp/include/erp/catalogs/sign.hrl").
+-include_lib("erp/include/erp/catalogs/crmRole.hrl").
+-include_lib("erp/include/erp/catalogs/address.hrl").
+-include_lib("erp/include/erp/catalogs/assistantMark.hrl").
+-include_lib("erp/include/erp/catalogs/location.hrl").
+-include_lib("erp/include/erp/catalogs/koatuu.hrl").
+-include_lib("erp/include/erp/catalogs/dict.hrl").
+-include_lib("erp/include/erp/catalogs/topic.hrl").
+-include_lib("erp/include/erp/catalogs/userGroup.hrl").
+-include_lib("erp/include/erp/catalogs/docLabel.hrl").
+-include_lib("erp/include/erp/catalogs/holiday.hrl").
+-include_lib("erp/include/erp/catalogs/deedCat.hrl").
+-include_lib("erp/include/erp/catalogs/journalFilter.hrl").
+-include_lib("erp/include/erp/catalogs/logsFilter.hrl").
+-include_lib("erp/include/erp/catalogs/organization.hrl").
+-include_lib("erp/include/erp/catalogs/rejectComment.hrl").
+-include_lib("erp/include/erp/catalogs/sendInfo.hrl").
+-include_lib("erp/include/erp/docs/bizTask.hrl").
+-include_lib("erp/include/erp/docs/autoTask.hrl").
+-include_lib("erp/include/erp/docs/notifyTask.hrl").
+-include_lib("erp/include/erp/docs/controlTask.hrl").
+-include_lib("erp/include/erp/docs/citizenInquire.hrl").
+-include_lib("erp/include/erp/docs/deputyInquire.hrl").
+-include_lib("erp/include/erp/docs/esqInquire.hrl").
+-include_lib("erp/include/erp/docs/adminService.hrl").
+-include_lib("erp/include/erp/docs/inputOrder.hrl").
+-include_lib("erp/include/erp/docs/internalDoc.hrl").
+-include_lib("erp/include/erp/docs/orgDoc.hrl").
+-include_lib("erp/include/erp/docs/outputOrder.hrl").
+-include_lib("erp/include/erp/docs/sevDoc.hrl").
+-include_lib("erp/include/erp/docs/publicInquire.hrl").
+-include_lib("erp/include/erp/docs/emailDoc.hrl").
+-include_lib("erp/include/erp/docs/sendOrder.hrl").
+-include_lib("erp/include/erp/catalogs/search.hrl").
+-include_lib("erp/include/erp/doclink.hrl").
+-include_lib("erp/include/erp/constructor.hrl").
+-include_lib("erp/include/erp/docs/commonDoc.hrl").
+-include_lib("erp/include/erp/docs/grantInquire.hrl").
+-include_lib("erp/include/erp/docs/grantPermission.hrl").
+-include_lib("erp/include/erp/catalogs/branch.hrl").
+-include_lib("erp/include/erp/catalogs/position.hrl").
+-include_lib("erp/include/erp/catalogs/person.hrl").
+-include_lib("erp/include/erp/catalogs/employee.hrl").
+-include_lib("erp/include/erp/catalogs/deputy.hrl").
+-include_lib("erp/include/erp/catalogs/userRole.hrl").
+-include_lib("erp/include/erp/catalogs/chatMessage.hrl").
+-include_lib("erp/include/erp/catalogs/orgEmail.hrl").
+-include_lib("erp/include/erp/catalogs/fileDesc.hrl").
+-include_lib("erp/include/erp/catalogs/tabInfo.hrl").
+-include_lib("erp/include/erp/catalogs/project.hrl").
+-include_lib("erp/include/erp/catalogs/certificate.hrl").
+-include_lib("erp/include/erp/catalogs/docTemplate.hrl").
+-include_lib("erp/include/abac/abac.hrl").
+-include_lib("erp/include/abac/objects.hrl").
+-include_lib("erp/include/abac/request.hrl").
+-include_lib("erp/include/abac/subjects.hrl").
 -include_lib("form/include/formReg.hrl").
 -include_lib("bpe/include/bpe.hrl").
 -include_lib("form/include/meta.hrl").
@@ -155,7 +155,7 @@ tables() -> [
               #table  { name = projectUser, fields = record_info(fields, projectUser), instance = #projectUser{} },
               #table  { name = field, fields = record_info(fields, field), instance = #field{} },
               #table  { name = role, fields = record_info(fields, role), instance = #role{} },
-              #table  { name = sign, fields = record_info(fields, sign), instance = #sign{} }
+              #table  { name = sign, fields = record_info(fields, sign), instance = #sign{} },
               #table  { name = inquireGrant, fields = record_info(fields, inquireGrant), instance = #inquireGrant{} },
               #table  { name = grantUnit, fields = record_info(fields, grantUnit), instance = #grantUnit{} },
               #table  { name = grantPermission, fields = record_info(fields, grantPermission), instance = #grantPermission{} },
@@ -175,12 +175,11 @@ tables() -> [
               #table  { name = object_form, fields = record_info(fields, object_form), instance = #object_form{}},
               #table  { name = object_corr, fields = record_info(fields, object_corr), instance = #object_corr{}},
               #table  { name = object_email, fields = record_info(fields, object_email), instance = #object_email{}},
-              #table  { name = object_employee, fields = record_info(fields, object_employee), instance = #object_employee{}}
+              #table  { name = object_employee, fields = record_info(fields, object_employee), instance = #object_employee{}},
               #table  { name = rejectComment, fields = record_info(fields, rejectComment), instance = #rejectComment{}},
               #table  { name = sendInfo, fields = record_info(fields, sendInfo), instance = #sendInfo{}},
               #table  { name = report, fields = record_info(fields, report), instance = #report{}},
               #table  { name = reportCriteria, fields = record_info(fields, reportCriteria), instance = #reportCriteria{}},
-              #table  { name = procChild, fields = record_info(fields, procChild), instance = #procChild{}, keys = record_info(fields, procChild)}
               #table  { name = procChild, fields = record_info(fields, procChild), instance = #procChild{}, keys = record_info(fields, procChild)},
               #table  { name = urgentLink, fields = record_info(fields, urgentLink), instance = #urgentLink{}},
               #table  { name = docTemplate, fields = record_info(fields, docTemplate), instance = #docTemplate{}}

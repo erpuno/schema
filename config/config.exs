@@ -1,4 +1,4 @@
-use Mix.Config
+import Config
 
 config :bpe,
   ttl: :infinity,
@@ -16,11 +16,11 @@ config :bpe,
        id: :synrc,
        max_size: 2000,
        module: :logger_std_h,
-       config: %{type: :file, file: 'erp.log'},
+       config: %{type: :file, file: ~c"erp.log"},
        formatter:
          {:logger_formatter,
           %{
-            template: [:time, ' ', :pid, ' ', :module, ' ', :msg, '\n'],
+            template: [:time, ~c" ", :pid, ~c" ", :module, ~c" ", :msg, ~c"\n"],
             single_line: true
           }}
      }}
@@ -31,5 +31,5 @@ config :kvs,
   dba_st: :kvs_st,
   schema: [:kvs, :kvs_stream, :schema]
 
-config :schema,
+config :erp,
   boot: []

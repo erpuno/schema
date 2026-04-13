@@ -5,7 +5,7 @@ defmodule ABAC do
     Enum.filter(Path.wildcard("include/abac/*"), &(Path.extname(&1) == ".hrl")),
     fn t ->
       Enum.each(
-        Record.extract_all([from_lib: "schema/" <> t, includes: ["include"]]),
+        Record.extract_all([from_lib: "erp/" <> t, includes: ["include"]]),
         fn {name, definition} ->
           case :lists.member(name, :application.get_env(:kernel, :erp_tables, [])) do
             true -> :skip

@@ -1,7 +1,7 @@
 -ifndef(GRANT_PERMISSION_HRL).
 -define(GRANT_PERMISSION_HRL, true).
 
--include_lib("schema/include/erp/catalogs/person.hrl").
+-include_lib("erp/include/erp/catalogs/person.hrl").
 
 -record(grantPermission, {
     id= [] :: binary(),

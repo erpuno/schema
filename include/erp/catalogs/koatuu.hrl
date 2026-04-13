@@ -1,7 +1,7 @@
 -ifndef(KOATUU_HRL).
 -define(KOATUU_HRL, true).
 
--include_lib("schema/include/erp/catalogs/dict.hrl").
+-include_lib("erp/include/erp/catalogs/dict.hrl").
 
 -record (locality, {id, 
 					koatuu_id=[],

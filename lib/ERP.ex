@@ -11,7 +11,7 @@ defmodule ERP do
     hrl_files,
     fn t ->
       Enum.each(
-        Record.extract_all([from_lib: "schema/" <> t, includes: ["include"]]),
+        Record.extract_all([from_lib: "erp/" <> t, includes: ["include"]]),
         fn {name, definition} ->
           # :io.format '~p', [{name}]
           prev = :application.get_env(:kernel, :erp_tables, [])
