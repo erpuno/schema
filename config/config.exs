@@ -26,7 +26,7 @@ config :bpe,
      }}
   ]
 
- if (System.get_env("BPE_BACKEND") || "mnesia") == "rocksdb"
+ if (System.get_env("KVS_BACKEND") || System.get_env("BPE_BACKEND") || "mnesia") == "rocksdb"
   do import_config "config.rocksdb.exs"
 else import_config "config.mnesia.exs" end
 

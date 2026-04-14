@@ -6,6 +6,7 @@ defmodule ERP.Mixfile do
       app: :erp,
       version: "7.4.13",
       description: "ERP/1 Directory Schema",
+      erlc_options: [:nowarn_export_all, :nowarn_deprecated_function]
       package: package(),
       deps: deps()
     ]
