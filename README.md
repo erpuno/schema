@@ -7,14 +7,8 @@ SCHEMA: Схема Даних ERP/1 Підприємства
 Intro
 -----
 
-```
-$ iex -S mix
-> require ERP
-> ERP.internalDoc
-{:internalDoc, [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [],
- [], [], [], {:project, [], [], [], [], [], [], [], [], [], [], []}, [], [], [],
- [], [], [], [], {:assistantMark, [], [], []}}
-```
+* Dictionaries
+* Documents
 
 Author
 ------
