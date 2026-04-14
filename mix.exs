@@ -30,7 +30,7 @@ defmodule ERP.Mixfile do
     deps = [
       {:bpe, "11.4.16"},
       {:form, "11.4.14"},
-      {:ex_doc, ">= 0.0.0", only: :dev}
+      {:ex_doc, ">= 0.0.0", only: :dev, runtime: false}
     ]
 
     if System.get_env("KVS_BACKEND") == "rocksdb" do
