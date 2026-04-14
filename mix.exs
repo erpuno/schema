@@ -4,7 +4,7 @@ defmodule ERP.Mixfile do
   def project() do
     [
       app: :erp,
-      version: "7.4.13",
+      version: "7.4.14",
       description: "ERP/1 Directory Schema",
       package: package(),
       deps: deps(),
