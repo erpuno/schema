@@ -14,7 +14,7 @@ defmodule ERP.Mixfile do
 
   def package do
     [
-      files: ~w(doc lib include src mix.exs LICENSE README.md),
+      files: ~w(config lib include src mix.exs LICENSE README.md),
       licenses: ["ISC"],
       maintainers: ["Namdak Tonpa"],
       name: :erp,
