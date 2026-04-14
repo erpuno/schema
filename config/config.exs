@@ -26,10 +26,9 @@ config :bpe,
      }}
   ]
 
-config :kvs,
-  dba: :kvs_rocks,
-  dba_st: :kvs_st,
-  schema: [:kvs, :kvs_stream, :schema]
+ if (System.get_env("BPE_BACKEND") || "mnesia") == "rocksdb"
+  do import_config "config.rocksdb.exs"
+else import_config "config.mnesia.exs" end
 
 config :erp,
   boot: []
