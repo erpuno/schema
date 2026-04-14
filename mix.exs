@@ -4,7 +4,7 @@ defmodule ERP.Mixfile do
   def project() do
     [
       app: :erp,
-      version: "7.4.15",
+      version: "7.4.16",
       description: "ERP/1 Directory Schema",
       package: package(),
       deps: deps(),
@@ -28,7 +28,7 @@ defmodule ERP.Mixfile do
 
   def deps() do
     deps = [
-      {:bpe, "11.4.15"},
+      {:bpe, "11.4.16"},
       {:form, "11.4.14"},
       {:ex_doc, ">= 0.0.0", only: :dev}
     ]
