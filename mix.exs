@@ -33,10 +33,8 @@ defmodule ERP.Mixfile do
       {:ex_doc, ">= 0.0.0", only: :dev}
     ]
 
-    backend = System.get_env("KVS_BACKEND") || "rocksdb"
-
-    if backend == "rocksdb" do
-      deps ++ [{:rocksdb, "~> 2.5.0"}]
+    if System.get_env("KVS_BACKEND") == "rocksdb" do
+      deps ++ [{:rocksdb, "~> 2.5", optional: true}]
     else
       deps
     end
